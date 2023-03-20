@@ -2,9 +2,9 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import { Colors } from '../../theme/colors'
 
-export default function UnderlineMediumTitle({text,textColor = Colors.primary_white,style}) {
+export default function UnderlineMediumTitle({text,textColor = Colors.primary_white,textAlign = "left"}) {
     return (
-        <Typography variant="h3" gutterBottom color={textColor} textAlign="center" style={{textDecoration:'underline'}}>
+        <Typography variant="h4" fontWeight={800} gutterBottom color={textColor} textAlign={textAlign} style={{textDecoration:'underline'}}>
             {text}
         </Typography>)
 }

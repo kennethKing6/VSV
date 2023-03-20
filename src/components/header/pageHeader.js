@@ -10,6 +10,7 @@ import MediumTopMarginLayout from '../layout/mediumTopMarginLayout'
 import NoSpacingLayout from '../layout/NoSpacingLayout'
 import SmallSpacingLayout from '../layout/smallSpacingLayout'
 import PageNavigation from '../navigation/pageNavigation'
+import LargeTitle from '../Text/LargeTitle'
 
 export default function PageHeader() {
     return (
@@ -21,9 +22,8 @@ export default function PageHeader() {
                     <Grid xs={12} md={8} height={300} style={{ backgroundImage: `url(${ASSETS.people_no_bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: 'cover', }} ></Grid>
 
                         <Grid xs={12} md={4} >
-                            <Typography variant='h3' gutterBottom style={{ color: Colors.primary_white }}>
-                                Briser les barrières, bâtir des passerelles
-                            </Typography>
+                            <LargeTitle text={"Briser les barrières, bâtir des passerelles"}/>
+                                
                             <MediumTopMarginLayout><CTAButton text={"Contact Us"} /></MediumTopMarginLayout>
                         </Grid>
                     </MediumPaddingTopBottom>

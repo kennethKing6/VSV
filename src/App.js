@@ -3,7 +3,6 @@ import { ASSETS } from './assets/assets';
 import CardParagraph from './components/Card/CardParagraph';
 import VVSFooter from './components/Footer/VVSFooter';
 import PageHeader from './components/header/pageHeader';
-import MediumPaddingTopBottom from './components/layout/mediumPaddingTopBottom';
 import MediumTopMarginLayout from './components/layout/mediumTopMarginLayout';
 import NoSpacingLayout from './components/layout/NoSpacingLayout';
 import SmallSpacingLayout from './components/layout/smallSpacingLayout';
@@ -21,9 +20,11 @@ function App() {
           </Grid>
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
-              <MediumTopMarginLayout><UnderlineMediumTitle   text={"BREF HISTORIQUE"} textColor={Colors.primary_black}/></MediumTopMarginLayout>
               <MediumTopMarginLayout>
-                <Typography variant="h5" textAlign={"left"} style={{ width: '100%' }} gutterBottom>
+                <UnderlineMediumTitle textAlign='center' text={"BREF HISTORIQUE"} textColor={Colors.primary_black} />
+              </MediumTopMarginLayout>
+              <MediumTopMarginLayout>
+                <Typography variant="h6" textAlign={"left"} lineHeight={2} style={{ width: '100%' }} gutterBottom>
                   Dans le souci de mettre à la disposition de la communauté et de l’Etat de Côte d’Ivoire, sa
                   riche expérience internationale, régionale et nationale dans les domaines du développement,
                   de la gouvernance, des droits humains, de la démocratie et de tous les secteurs connexes, de
@@ -35,14 +36,14 @@ function App() {
                 </Typography>
               </MediumTopMarginLayout>
               <MediumTopMarginLayout>
-                <Typography variant="h5" textAlign={"left"} style={{ width: '100%' }} gutterBottom>
+                <Typography variant="h6" lineHeight={2} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
                   L’objectif général de VSV est d’influencer la prise de décision sur toutes les questions de droits
                   humains, de gouvernance et de justice pour la pleine jouissance des droits par les populations
                   en général et en particulier les minorités et les personnes vulnérables.
                 </Typography>
               </MediumTopMarginLayout>
               <MediumTopMarginLayout>
-                <Typography variant="h5" textAlign={"left"} style={{ width: '100%' }} gutterBottom>
+                <Typography variant="h6" lineHeight={1.8} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
                   Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits
                   humains et la démocratie participative.
                 </Typography>
