@@ -3,31 +3,25 @@ import React from 'react'
 import { ASSETS } from '../../assets/assets'
 import { APP18n } from '../../i18n/i18n'
 import { Colors } from '../../theme/colors'
-import SmallSpacingLayout from '../layout/smallSpacingLayout'
+import { Button, Navbar, Nav } from 'react-bootstrap';
 
 export default function PageNavigation() {
     return (
-        <Grid container >
-            <Grid item xs={4} md={2}><Avatar sx={{ bgcolor: Colors.primary_yellow, width: 100, height: 50 }} variant="square" src={ASSETS.logo_svg} /></Grid>
-            <Grid item md={10} xs={8} container >
-                <SmallSpacingLayout>
-                    <Grid item xs={12} sm={1}><Link style={styles.links} href="#" component={"button"} textAlign="left" fontWeight={800} underline="none" >
-                        {APP18n.translate(APP18n.getKeys().navigation_libraries)}
-                    </Link></Grid>
+        <Grid container  >
+            <Navbar expand="md">
+                <Navbar.Brand href="#"><Avatar sx={{ bgcolor: Colors.primary_yellow, width: 100, height: 50 }} variant="square" src={ASSETS.logo_svg} /></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{position:'relative',left:'70%'}}/>
+                <Navbar.Collapse id="basic-navbar-nav" >
+                    <Nav className="mr-auto" >
+                        <Nav.Link href="#home" style={styles.links}>{APP18n.translate(APP18n.getKeys().navigation_libraries)}</Nav.Link>
+                        <Nav.Link href="#link" style={styles.links}>{APP18n.translate(APP18n.getKeys().navigation_video)}</Nav.Link>
+                        <Nav.Link href="#link" style={styles.links}>{APP18n.translate(APP18n.getKeys().navigation_audio)}</Nav.Link>
+                        <Nav.Link href="#link" style={styles.links}>{APP18n.translate(APP18n.getKeys().navigation_activities)}</Nav.Link>
 
-                    <Grid item xs={12} sm={1}><Link style={styles.links} href="#" component={"button"} textAlign="right" fontWeight={800} underline="none">
-                        {APP18n.translate(APP18n.getKeys().navigation_video)}
-                    </Link></Grid>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
 
-                    <Grid item xs={12} sm={1}><Link style={styles.links} href="#" component={"button"} textAlign="right" fontWeight={800} underline="none">
-                        {APP18n.translate(APP18n.getKeys().navigation_audio)}
-                    </Link></Grid>
-
-                    <Grid item xs={12} sm={1}><Link style={styles.links} href="#" component={"button"} textAlign="right" fontWeight={800} underline="none">
-                    {APP18n.translate(APP18n.getKeys().navigation_activities)}
-                    </Link></Grid>
-                </SmallSpacingLayout>
-            </Grid>
         </Grid>
     )
 }

@@ -9,6 +9,7 @@ import SmallSpacingLayout from './components/layout/smallSpacingLayout';
 import UnderlineMediumTitle from './components/Text/UnderlineMediumTitle';
 import { APP18n } from './i18n/i18n';
 import { Colors } from './theme/colors';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
