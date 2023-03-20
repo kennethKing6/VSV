@@ -1,5 +1,6 @@
 import { Button } from '@mui/material'
 import React from 'react'
+import { APPFONT } from '../../fonts/font'
 import { Colors } from '../../theme/colors'
 import { SPACING } from '../../theme/spacing'
 
@@ -14,6 +15,7 @@ const styles = {
     button: {
         backgroundColor: Colors.primary_yellow,
         padding:SPACING.xLg,
-        color:Colors.primary_black
+        color:Colors.primary_black,
+        fontFamily:APPFONT.getFontKeys().fontNameSlabo
     }
 }

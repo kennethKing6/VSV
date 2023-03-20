@@ -10,6 +10,7 @@ import UnderlineMediumTitle from './components/Text/UnderlineMediumTitle';
 import { APP18n } from './i18n/i18n';
 import { Colors } from './theme/colors';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LargeParagraph from './components/Text/LargeParagraph';
 
 function App() {
   return (
@@ -22,26 +23,10 @@ function App() {
           </Grid>
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
-              <MediumTopMarginLayout>
-                <UnderlineMediumTitle textAlign='center' text={APP18n.translate(APP18n.getKeys().presentation_brief_history)} textColor={Colors.primary_black} />
-              </MediumTopMarginLayout>
-              <MediumTopMarginLayout>
-                <Typography variant="h6" textAlign={"left"} lineHeight={2} style={{ width: '100%' }} gutterBottom>
-                 {APP18n.translate(APP18n.getKeys().presentation_brief_history_p1)}
-                </Typography>
-              </MediumTopMarginLayout>
-              <MediumTopMarginLayout>
-                <Typography variant="h6" lineHeight={2} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
-                {APP18n.translate(APP18n.getKeys().presentation_brief_history_p2)}
-                </Typography>
-              </MediumTopMarginLayout>
-              <MediumTopMarginLayout>
-                <Typography variant="h6" lineHeight={1.8} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
-                {APP18n.translate(APP18n.getKeys().presentation_brief_history_p3)}
-                </Typography>
-              </MediumTopMarginLayout>
-
-
+              <MediumTopMarginLayout><UnderlineMediumTitle textAlign='center' text={APP18n.translate(APP18n.getKeys().presentation_brief_history)} textColor={Colors.primary_black} /></MediumTopMarginLayout>
+              <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p1)} /></MediumTopMarginLayout>
+              <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p2)} /></MediumTopMarginLayout>
+              <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p3)} /></MediumTopMarginLayout>
             </SmallSpacingLayout>
           </Grid>
 
