@@ -1,6 +1,7 @@
 import { Grid, Typography, Paper, Box, Button } from '@mui/material'
 import React from 'react'
 import { ASSETS } from '../../assets/assets'
+import { APP18n } from '../../i18n/i18n'
 import { Colors } from '../../theme/colors'
 import { SPACING } from '../../theme/spacing'
 import CTAButton from '../Button/CTAButton'
@@ -22,9 +23,9 @@ export default function PageHeader() {
                     <Grid xs={12} md={8} height={300} style={{ backgroundImage: `url(${ASSETS.people_no_bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: 'cover', }} ></Grid>
 
                         <Grid xs={12} md={4} >
-                            <LargeTitle text={"Briser les barrières, bâtir des passerelles"}/>
+                            <LargeTitle text={APP18n.translate(APP18n.getKeys().header_slogan)}/>
                                 
-                            <MediumTopMarginLayout><CTAButton text={"Contact Us"} /></MediumTopMarginLayout>
+                            <MediumTopMarginLayout><CTAButton text={APP18n.translate(APP18n.getKeys().header_cta)} /></MediumTopMarginLayout>
                         </Grid>
                     </MediumPaddingTopBottom>
                 </MediumTopMarginLayout>

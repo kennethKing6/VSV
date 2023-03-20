@@ -7,6 +7,7 @@ import MediumTopMarginLayout from './components/layout/mediumTopMarginLayout';
 import NoSpacingLayout from './components/layout/NoSpacingLayout';
 import SmallSpacingLayout from './components/layout/smallSpacingLayout';
 import UnderlineMediumTitle from './components/Text/UnderlineMediumTitle';
+import { APP18n } from './i18n/i18n';
 import { Colors } from './theme/colors';
 
 function App() {
@@ -21,31 +22,21 @@ function App() {
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
               <MediumTopMarginLayout>
-                <UnderlineMediumTitle textAlign='center' text={"BREF HISTORIQUE"} textColor={Colors.primary_black} />
+                <UnderlineMediumTitle textAlign='center' text={APP18n.translate(APP18n.getKeys().presentation_brief_history)} textColor={Colors.primary_black} />
               </MediumTopMarginLayout>
               <MediumTopMarginLayout>
                 <Typography variant="h6" textAlign={"left"} lineHeight={2} style={{ width: '100%' }} gutterBottom>
-                  Dans le souci de mettre à la disposition de la communauté et de l’Etat de Côte d’Ivoire, sa
-                  riche expérience internationale, régionale et nationale dans les domaines du développement,
-                  de la gouvernance, des droits humains, de la démocratie et de tous les secteurs connexes, de
-                  fédérer au mieux les compétences et les dynamiques de transformation de la société, afin de
-                  participer au développement, à l’état de droits, à la consolidation de la paix et à la prévention
-                  des conflits, l’ONG VIVRE SANS VIOLENCE (VSV) a été officiellement crée en avril 2018 par
-                  Mme KOUAKOU Y.N.Nathalie, Médiatrice, spécialiste du Plaidoyer, experte en Droits humains,
-                  Genre et Diversité et Ex présidente de Amnesty International Côte d’Ivoire.
+                 {APP18n.translate(APP18n.getKeys().presentation_brief_history_p1)}
                 </Typography>
               </MediumTopMarginLayout>
               <MediumTopMarginLayout>
                 <Typography variant="h6" lineHeight={2} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
-                  L’objectif général de VSV est d’influencer la prise de décision sur toutes les questions de droits
-                  humains, de gouvernance et de justice pour la pleine jouissance des droits par les populations
-                  en général et en particulier les minorités et les personnes vulnérables.
+                {APP18n.translate(APP18n.getKeys().presentation_brief_history_p2)}
                 </Typography>
               </MediumTopMarginLayout>
               <MediumTopMarginLayout>
                 <Typography variant="h6" lineHeight={1.8} textAlign={"left"} style={{ width: '100%' }} gutterBottom>
-                  Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits
-                  humains et la démocratie participative.
+                {APP18n.translate(APP18n.getKeys().presentation_brief_history_p3)}
                 </Typography>
               </MediumTopMarginLayout>
 
@@ -62,9 +53,9 @@ function App() {
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
               <CardParagraph
-                title={"Vision"}
-                paragraph={` Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits
-                humains et la démocratie participative.`}
+                title={APP18n.translate(APP18n.getKeys().presentation_vision_card_title)}
+
+                paragraph={APP18n.translate(APP18n.getKeys().presentation_vision_card_p)}
                 bgColor={Colors.primary_purple}
               />
             </SmallSpacingLayout>
@@ -73,9 +64,8 @@ function App() {
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
               <CardParagraph
-                title={"Mission"}
-                paragraph={` Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits
-                humains et la démocratie participative.`}
+                title={APP18n.translate(APP18n.getKeys().presentation_mission_card_title)}
+                paragraph={APP18n.translate(APP18n.getKeys().presentation_mission_card_p)}
                 bgColor={Colors.primary_yellow}
 
               />
