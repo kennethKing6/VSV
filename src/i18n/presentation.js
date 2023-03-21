@@ -4,7 +4,7 @@ export const presentationFr = {
     presentation_brief_history_p2: 'L’objectif général de VSV est d’influencer la prise de décision sur toutes les questions de droits humains, de gouvernance et de justice pour la pleine jouissance des droits par les populations en général et en particulier les minorités et les personnes vulnérables.',
     presentation_brief_history_p3: 'Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits humains et la démocratie participative.',
     presentation_vision_card_title:'Vision',
-    presentation_vision_card_p:'Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits humains et la démocratie participative.',
+    presentation_vision_card_p:'La vision de vivre sans violence est de contribuer à bâtir un monde où tous les citoyens jouissent de leurs droits et liberté dans un élan de solidarité équitable.',
     presentation_mission_card_title:'Mission',
-    presentation_mission_card_p:'Sa mission consiste ainsi à promouvoir l’Etat de droit, la bonne gouvernance, les droits humains et la démocratie participative.'
+    presentation_mission_card_p:'La mission de Vivre sans violence est de promouvoir l’Etat de droit, la bonne gouvernance, les droits humains et la démocratie participative.'
 }
