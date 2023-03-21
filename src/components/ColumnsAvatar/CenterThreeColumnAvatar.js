@@ -11,7 +11,7 @@ export default function CenterThreeColumnAvatar({
 
     return (
         <CenterLayout>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} >
                 {firstList.map((v) => {
                     const { height, url, id } = v
                     return (<CommonAvatar height={height} key={id} url={url} />)
