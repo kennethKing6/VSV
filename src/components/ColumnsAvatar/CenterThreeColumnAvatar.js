@@ -8,21 +8,25 @@ export default function CenterThreeColumnAvatar({
     secondList = [],
     thirdList = []
 }) {
+
     return (
         <CenterLayout>
             <Grid item xs={12} sm={4}>
                 {firstList.map((v) => {
-                    return (<CommonAvatar height={v} key={v} />)
+                    const { height, url, id } = v
+                    return (<CommonAvatar height={height} key={id} url={url} />)
                 })}
             </Grid>
             <Grid item xs={12} sm={4}>
                 {secondList.map((v) => {
-                    return (<CommonAvatar height={v} key={v} />)
+                    const { height, url, id } = v
+                    return (<CommonAvatar height={height} key={id} url={url} />)
                 })}
             </Grid>
             <Grid item xs={12} sm={4}>
                 {thirdList.map((v) => {
-                    return (<CommonAvatar height={v} key={v} />)
+                    const { height, url, id } = v
+                    return (<CommonAvatar height={height} key={id} url={url} />)
                 })}
             </Grid>
         </CenterLayout>
