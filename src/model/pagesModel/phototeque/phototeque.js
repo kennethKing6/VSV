@@ -1,5 +1,6 @@
-import { APIBaseService } from "../api/apiBaseService";
-import { BASE_URL } from "../api/Baseurl";
+import { BASE_URL } from "../../api/Baseurl";
+import { APIBaseService } from "../../api/apiBaseService";
+
 import { Photo } from "./photo";
 
 export  class Phototeque extends APIBaseService {

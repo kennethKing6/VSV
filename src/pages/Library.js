@@ -5,7 +5,7 @@ import CenterThreeColumnAvatar from '../components/ColumnsAvatar/CenterThreeColu
 import CommonPageHeader from '../components/header/commonPageHeader'
 import CenterLayout from '../components/layout/centerLayout'
 import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
-import { Phototeque, } from '../model/phototeque/phototeque'
+import { Phototeque, } from '../model/pagesModel/phototeque/phototeque'
 import { SPACING } from '../theme/spacing'
 
 export default function Library() {

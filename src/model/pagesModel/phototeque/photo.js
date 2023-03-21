@@ -1,4 +1,4 @@
-import { BASE_URL } from "../api/Baseurl";
+import { BASE_URL } from "../../api/Baseurl";
 
 export class Photo {
 
