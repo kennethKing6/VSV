@@ -14,7 +14,6 @@ export default function Audio() {
 
     useEffect(() => {
         audio.current.getAudios().then((auds) => {
-            console.log('auds',auds)
             setAudios(auds)
         }).catch((err) => {
             throw new Error(err)

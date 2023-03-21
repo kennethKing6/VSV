@@ -35,8 +35,6 @@ export default function Library() {
   useEffect(() => {
     phototeque.current.getPhotos().then((result) => {
 
-      console.log(result)
-
       const first = [];
       const second = [];
       const third = []
