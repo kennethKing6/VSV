@@ -1,5 +1,6 @@
 name: Deploy master
 on:
+  workflow_dispatch:
   push:
     branches:
     - kk/cd-pipeline
