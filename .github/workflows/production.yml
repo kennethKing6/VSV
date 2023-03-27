@@ -2,7 +2,7 @@ name: Deploy master
 on:
   push:
     branches:
-    - cd-pipeline
+    - kk/cd-pipeline
 
 jobs:
   build:
