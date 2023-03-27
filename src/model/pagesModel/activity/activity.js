@@ -31,12 +31,12 @@ export class Activity {
         this.description = description;
         this.title = titre;
         this.caption = caption
+
     }
 
     getUrl() {
         return BASE_URL + `${this.photoUrl}`
     }
-
 
     getHeight() {
         return this.photoHeight
