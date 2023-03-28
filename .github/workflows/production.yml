@@ -13,15 +13,10 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v2
 
-    - name: Generate deployment package
-      run: zip -r deploy.zip . -x '*.git*'
-
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v21
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: vivre-sans-violence
-        environment_name: Vivresansviolence-env-1
-        version_label: 12345
-        region: us-east-2
+    - name: Deploy to ec2
+      uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_default_region: us-east-2
+          dot_env: ${{ secrets.DOT_ENV }}
