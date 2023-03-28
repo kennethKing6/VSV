@@ -3,16 +3,22 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - kk/cd-pipeline
+    - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Run Lint Test
+        run: npm run lint
+      - name: Run test
+        run: npm run test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout source code
       uses: actions/checkout@v2
-
     - name: Deploy to ec2
       uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
       with:
