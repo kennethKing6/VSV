@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  test-app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/.github/workflows
+      - /app/node_modules
+      - .:/app
