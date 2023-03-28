@@ -20,4 +20,3 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_default_region: us-east-2
         dot_env: ${{ secrets.DOT_ENV }}
-        app_port: 80
