@@ -4,6 +4,8 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
     volumes:
       - /app/.github/workflows
       - /app/node_modules
