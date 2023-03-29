@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Activity from './pages/Activity';
 import Video from './pages/Video';
 import Audio from './pages/Audio';
+import Contact from './pages/Contact';
 
 
 function App() {
@@ -17,8 +18,7 @@ function App() {
           <Route path="/activity" element={<Activity/>} />
           <Route path="/audio" element={<Audio/>} />
           <Route path="/video" element={<Video/>} />
-
-
+          <Route path="/contact" element={<Contact/>} />
       </Routes>
     </BrowserRouter>
 

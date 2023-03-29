@@ -1,5 +1,6 @@
 import { Grid, Typography, Paper, Box, Button } from '@mui/material'
 import React from 'react'
+import { useNavigate, useNavigation } from 'react-router-dom'
 import { ASSETS } from '../../assets/assets'
 import { APP18n } from '../../i18n/i18n'
 import { Colors } from '../../theme/colors'
@@ -14,6 +15,7 @@ import PageNavigation from '../navigation/pageNavigation'
 import LargeTitle from '../Text/LargeTitle'
 
 export default function PageHeader() {
+    const navigation = useNavigate()
     return (
         <MediumSpacingLayout style={styles.container}>
             <PageNavigation />
@@ -25,7 +27,9 @@ export default function PageHeader() {
                         <Grid xs={12} md={4} >
                             <LargeTitle text={APP18n.translate(APP18n.getKeys().header_slogan)}/>
                                 
-                            <MediumTopMarginLayout><CTAButton text={APP18n.translate(APP18n.getKeys().header_cta)} /></MediumTopMarginLayout>
+                            <MediumTopMarginLayout>
+                                <CTAButton text={APP18n.translate(APP18n.getKeys().header_cta)} onClick={()=>navigation("contact")}/>
+                                </MediumTopMarginLayout>
                         </Grid>
                     </MediumPaddingTopBottom>
                 </MediumTopMarginLayout>

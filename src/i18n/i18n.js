@@ -1,19 +1,22 @@
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import { FooterFr } from "./footer";
-import { headerFr,headerEn } from "./header";
+import { formFr } from "./form";
+import { headerFr, headerEn } from "./header";
 import { navigationFr } from "./navigation";
 import { presentationFr } from "./presentation";
 
 const translations = {
     en: {
-        ...headerEn
+        ...headerEn,
     },
     fr: {
         ...headerFr,
         ...navigationFr,
         ...presentationFr,
-        ...FooterFr
+        ...FooterFr,
+        ...formFr
+
 
     }
 }
@@ -49,11 +52,11 @@ class App18n {
 
 
         if (!translated) {
-           const keyIndex = Object.values(translations.fr).findIndex((value, index) => value === translated)
+            const keyIndex = Object.values(translations.fr).findIndex((value, index) => value === translated)
 
-           const foundKey = Object.keys(keyIndex)
+            const foundKey = Object.keys(keyIndex)
 
-           translated = i18n.t(foundKey)
+            translated = i18n.t(foundKey)
         }
 
         return translated

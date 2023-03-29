@@ -4,9 +4,10 @@ import { APPFONT } from '../../fonts/font'
 import { Colors } from '../../theme/colors'
 import { SPACING } from '../../theme/spacing'
 
-export default function CTAButton({ text }) {
+export default function CTAButton({ text,onClick }) {
     return (
         <Button variant="contained" size='large'
+            onClick={onClick}
             style={styles.button}>{text}</Button>
     )
 }
