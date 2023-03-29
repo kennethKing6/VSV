@@ -8,9 +8,11 @@ import { Colors } from '../theme/colors';
 import SmallTitle from '../components/Text/SmallTitle';
 import { ContactPage } from '../model/pagesModel/contact/contactPage';
 import CommonContactForm from '../components/Form/CommonContactForm';
-
+import VVSFooter from '../components/Footer/VVSFooter';
+import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom';
 export default function Contact() {
 
+    
 
     const contactPage = useRef(new ContactPage())
 
@@ -44,7 +46,7 @@ export default function Contact() {
     return (
         <>
             <CommonPageHeader />
-            <MediumTopMarginLayout>
+            <MediumPaddingTopBottom>
                 <CenterLayout width='80%'>
                     <LargeTitle text={APP18n.translate(APP18n.getKeys().form_title)} textColor={Colors.primary_black} />
                     <SmallTitle text={APP18n.translate(APP18n.getKeys().form_message)} textColor={Colors.primary_black} />
@@ -75,7 +77,8 @@ export default function Contact() {
                     />
 
                 </CenterLayout>
-            </MediumTopMarginLayout>
+            </MediumPaddingTopBottom>
+            <VVSFooter/>
         </>
     )
 }
