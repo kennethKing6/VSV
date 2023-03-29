@@ -6,10 +6,11 @@ import { SPACING } from '../../theme/spacing';
 export default function CommonSubmitButton({
     text,
     disabled = true,
+    valid = false,
     onClick = ()=>{}
 }) {
     return (
-        <Button variant="primary"  style={styles.button} disabled={disabled} onClick={onClick}>
+        <Button variant="primary"  type={valid?'submit':'button'} style={styles.button} disabled={disabled} onClick={onClick}>
             {text}
         </Button>
     )

@@ -4,7 +4,11 @@ on:
   push:
     branches:
     - main
-
+env:
+  REACT_APP_AWS_ACCESS_KEY_ID_ENV: ${{secrets.AWS_ACCESS_KEY_ID}}
+  REACT_APP_AWS_SECRET_ACCESS_KEY_ENV: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+  REACT_APP_AWS_REGION_ENV: af-south-1
+  REACT_APP_EMAIL_SENDER_ENV: ${{env.EMAIL_SENDER_ENV}}
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -24,5 +28,5 @@ jobs:
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_default_region: us-east-2
+        aws_default_region: af-south-1
         dot_env: ${{ secrets.DOT_ENV }}

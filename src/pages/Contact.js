@@ -23,33 +23,21 @@ export default function Contact() {
     const [emailError, setEmailError] = useState(null)
 
     const [isValidating, setIsValidating] = useState(false)
-    const [sendEmail, setSendEmail] = useState(false)
-    const [responseMessage, setResponseMessage] = useState(false)
 
     //Validates input
     useEffect(() => {
         contactPage.current.validateInputs().then((result) => {
             const { nameError, surnameError, emailError } = result
-            if (nameError === null && surnameError === null && emailError === null) {
-                setSendEmail(!sendEmail)
-            }
             setEmailError(emailError);
             setSurnameError(surnameError)
             setNameError(nameError)
         }).catch((err) => {
+            console.error(err)
         })
 
     }, [isValidating])
 
-    //Submit Input
-    useEffect(() => {
 
-    }, [sendEmail])
-
-    //Show response message
-    useEffect(() => {
-
-    }, [responseMessage])
 
 
 
@@ -71,6 +59,19 @@ export default function Contact() {
 
                         surnameError={surnameError}
                         onSurnameValue={(value) => contactPage.current.setSurname(value)}
+
+                        onLongMessage={(value) => contactPage.current.setMessage(value)}
+
+                        onSubmit={() => {
+                                contactPage.current.sendEmail((result) => {
+                                    if (result) {
+                                        alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
+                                    }else{
+                                        alert(APP18n.translate(APP18n.getKeys().form_email_sent_error))
+                                    }
+                                })
+                            
+                        }}
                     />
 
                 </CenterLayout>

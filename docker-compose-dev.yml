@@ -10,3 +10,9 @@ services:
       - /app/.github/workflows
       - /app/node_modules
       - .:/app
+    environment:
+      - AWS_ACCESS_KEY_ID_ENV=${AWS_ACCESS_KEY_ID_ENV}
+      - AWS_SECRET_ACCESS_KEY_ENV=${AWS_SECRET_ACCESS_KEY_ENV}
+      - AWS_REGION_ENV=${AWS_REGION_ENV}
+      - EMAIL_SENDER_ENV=${EMAIL_SENDER_ENV}
+
