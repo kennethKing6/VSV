@@ -5,6 +5,7 @@ import { Colors } from '../../theme/colors'
 import MediumPaddingLayout from '../layout/mediumPaddingLayout'
 import NoSpacingLayout from '../layout/NoSpacingLayout'
 import SmallSpacingLayout from '../layout/smallSpacingLayout'
+import MapboxMap from '../Map/MapboxMap'
 import MediumTitle from '../Text/MediumTitle'
 import SmallTitle from '../Text/SmallTitle'
 import UnderlineMediumTitle from '../Text/UnderlineMediumTitle'
@@ -29,7 +30,7 @@ export default function VVSFooter() {
                 <Grid item xs={12} md={4}>
                     <UnderlineMediumTitle text={APP18n.translate(APP18n.getKeys().footer_siege)} />
                     <SmallTitle text={"Bingerville - Palmeraie"} />
-
+                    <MapboxMap/>
                 </Grid>
             </Grid>
 
