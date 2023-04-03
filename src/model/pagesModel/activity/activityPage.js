@@ -24,6 +24,7 @@ export class ActivityPage extends APIBaseService {
                     description: activity.getDescription(),
                     title: activity.getTitle(),
                     caption: activity.getCaption(),
+                    publicationDate: activity.getPublicationDate()
                 })
             }
 

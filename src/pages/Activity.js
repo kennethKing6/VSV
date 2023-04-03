@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState, } from 'react'
 import CardActivity from '../components/Card/CardActivity'
 import CommonPageHeader from '../components/header/commonPageHeader'
 import CenterLayout from '../components/layout/centerLayout'
-import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
 import { ActivityPage } from '../model/pagesModel/activity/activityPage'
-
+import VVSFooter from '../components/Footer/VVSFooter'
+import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 export default function Activity() {
 
     const activity = useRef(new ActivityPage())
@@ -25,21 +25,23 @@ export default function Activity() {
     return (
         <>
             <CommonPageHeader />
-            <MediumTopMarginLayout>
+            <MediumPaddingTopBottom>
                 <CenterLayout>
                     {activities.length > 0 ? activities.map((activity, index) => {
-                        const { id, url, caption, description, title } = activity
+                        const { id, url, caption, description, title, publicationDate } = activity
                         return (
-                            <Grid item key={id} sm={6} md={4} xs={12}>
+                            <Grid item key={JSON.stringify(activity)} sm={6} md={4} xs={12} mt={2}>
                                 <CardActivity caption={caption}
                                     description={description}
                                     imageUrl={url}
-                                    title={title} />
+                                    title={title}
+                                    publishedDate={publicationDate} />
                             </Grid>
                         )
                     }) : <></>}
                 </CenterLayout>
-            </MediumTopMarginLayout>
+            </MediumPaddingTopBottom>
+            <VVSFooter/>
         </>
     )
 }

@@ -1,29 +1,43 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function CardActivity({
     imageHeight = "250",
-    imageUrl = "http://localhost:3000/uploads/small_3q_YD_Ycg_Wr6z_Fd_F_Image_created_with_a_mobile_phone_433e3dc893.jpg",
+    imageUrl = null,
     imgAlt = "green iguana",
-    title = "Lizard",
-    description = "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-    caption = "Lizards are a widespread group of squamate reptiles"
+    title = null,
+    description = null,
+    caption = null,
+    publishedDate = ""
 
 }) {
+    const navigation = useNavigate()
     return (
-        <Card sx={{ width:'100%'}}>
-            <CardMedia
+        <Card sx={{ width: '100%' }}>
+            {imageUrl ? <CardMedia
                 component="img"
                 alt={imgAlt}
                 height={imageHeight}
                 image={imageUrl}
-            />
+            /> : <></>}
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">{title}</Typography>
-                <Typography variant="body2" color="text.secondary">{caption}</Typography>
+
+                <Typography gutterBottom variant="h5" noWrap component="div" style={{ fontSize: '100%', fontWeight: '900' }}>{title}</Typography>
+                {caption ? <Typography variant="body2" color="text.secondary">{caption}</Typography> :
+                    description ? <Typography variant="body2" color="text.secondary">{description.split(".")[0]}</Typography> : <></>}
+
             </CardContent>
             <CardActions>
-                <Button size="small">Voir plus</Button>
+                {description ? <Button size="small" onClick={() => navigation("/activityDetails", {
+                    state:{
+                        title: title,
+                        description: description,
+                        imageUrl: imageUrl,
+                        caption: caption,
+                        publishedDate: publishedDate
+                    }
+                })}>Voir plus</Button> : <></>}
             </CardActions>
         </Card>
     )

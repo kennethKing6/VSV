@@ -1,5 +1,26 @@
 import { BASE_URL } from "../../api/Baseurl";
 
+class ActivityImage {
+    constructor(image) {
+        this.#setup(image)
+    }
+    #setup(image) {
+        try {
+            const { data } = image
+            const { attributes } = data;
+            const { url } = attributes
+            this.image = BASE_URL + url
+        } catch (err) {
+            this.image = null
+        }
+
+    }
+
+    getUrl() {
+        return this.image
+    }
+}
+
 export class Activity {
 
     constructor(data) {
@@ -14,28 +35,26 @@ export class Activity {
             image,
             description,
             titre,
-            caption } = attributes
+            caption
+        } = attributes
 
-        const { data: activityData } = image
-
-        const { attributes: activityAttributes } = activityData
-        const { height, url } = activityAttributes
+        const activityImage = new ActivityImage(image)
 
         this.dateCreatedAt = createdAt;
         this.dateUpdateddAt = updatedAt;
         this.datePublisheddAt = publishedAt;
         this.dateLocaledAt = locale;
         this.ID = id;
-        this.photoUrl = url
-        this.photoHeight = height;
+        this.photoUrl = activityImage.getUrl()
+        this.photoHeight = null;
         this.description = description;
         this.title = titre;
-        this.caption = caption
+        this.caption = caption;
 
     }
 
     getUrl() {
-        return BASE_URL + `${this.photoUrl}`
+        return this.photoUrl
     }
 
     getHeight() {
@@ -51,7 +70,21 @@ export class Activity {
     getTitle() {
         return this.title
     }
+
+    getCreationDate() {
+        return this.dateCreatedAt
+    }
+
+    getPublicationDate() {
+        let myDate = new Date(this.datePublisheddAt);
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+        let frenchDate = myDate.toLocaleDateString('fr-FR', options);
+        return frenchDate
+    }
+
     getCaption() {
         return this.caption
     }
+
+
 }

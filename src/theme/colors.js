@@ -5,5 +5,6 @@ export const Colors = {
     primary_white:"white",
     primary_black:"black",
     primary_grey:"#E2E5E7",
-    primary_red:"#CF0210"
+    primary_red:"#CF0210",
+    primary_dark_grey:"#737373"
 }
