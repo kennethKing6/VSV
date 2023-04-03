@@ -1,6 +1,7 @@
 version: '3.9'
 services:
   test-app:
+    env_file: .env
     build: 
       context: ./
       dockerfile: Dockerfile.dev
@@ -11,8 +12,9 @@ services:
       - /app/node_modules
       - .:/app
     environment:
-      - AWS_ACCESS_KEY_ID_ENV=${AWS_ACCESS_KEY_ID_ENV}
-      - AWS_SECRET_ACCESS_KEY_ENV=${AWS_SECRET_ACCESS_KEY_ENV}
-      - AWS_REGION_ENV=${AWS_REGION_ENV}
-      - EMAIL_SENDER_ENV=${EMAIL_SENDER_ENV}
+      - REACT_APP_AWS_ACCESS_KEY_ID_ENV=${REACT_APP_AWS_ACCESS_KEY_ID_ENV}
+      - REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${REACT_APP_AWS_SECRET_ACCESS_KEY_ENV}
+      - REACT_APP_AWS_REGION_ENV=${REACT_APP_AWS_REGION_ENV}
+      - REACT_APP_EMAIL_SENDER_ENV=${REACT_APP_EMAIL_SENDER_ENV}
+      - REACT_APP_MAPBOX_TOKEN=${REACT_APP_MAPBOX_TOKEN}
 
