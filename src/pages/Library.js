@@ -6,20 +6,26 @@ import { Phototeque, } from '../model/pagesModel/phototeque/phototeque'
 import GaleryHeader from '../components/Galery/GaleryHeader'
 import CenterLayout from '../components/layout/centerLayout'
 import VVSFooter from '../components/Footer/VVSFooter'
+import CenterLayoutPagination from '../components/Pagination/CenterPagination'
 
 export default function Library() {
 
   const phototeque = useRef(new Phototeque())
 
   const [carouselList, setCarouselList] = useState([])
-
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(1)
 
   useEffect(() => {
-    phototeque.current.getPhotos().then((result) => {
-      setCarouselList(result)
+    phototeque.current.getPhotos(page).then((result) => {
+
+      const { carousel, pageSize } = result
+      setCarouselList(carousel)
+      setPageSize(pageSize)
+
     }).catch((err) => console.error(err))
 
-  }, [])
+  }, [page])
 
 
 
@@ -37,6 +43,9 @@ export default function Library() {
         </MediumTopMarginLayout>
 
       </CenterLayout>
+
+      <CenterLayoutPagination onSelectedPage={(value) => setPage(value)} pageSize={pageSize} />
+
       <VVSFooter />
     </>
   )

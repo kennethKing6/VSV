@@ -1,18 +1,19 @@
 import { BASE_URL } from "../../api/Baseurl";
-import { APIBaseService } from "../../api/apiBaseService";
+import { APIQuery } from "../../api/apiQuery";
 import { Activity } from "./activity";
 
-export class ActivityPage extends APIBaseService {
+export class ActivityPage extends APIQuery {
 
     constructor() {
         super()
     }
 
-    async getActivities() {
+    async getActivities(page = 1) {
         try {
-            const response = await this._get(`${BASE_URL}/api/activites?populate=*`)
+            const response = await this.paginateWithPageNum(`${BASE_URL}/api/activites`,page)
             const { data = [], meta } = response
 
+            //Extract data
             const result = []
 
             for (let i = 0; i < data.length; i++) {
@@ -28,8 +29,15 @@ export class ActivityPage extends APIBaseService {
                 })
             }
 
+            // Extract pageSize
+            const {pagination} = meta
+            const {pageCount} = pagination
 
-            return result
+
+            return {
+                data: result,
+                pageSize:pageCount
+            }
         } catch (err) {
             throw new Error(err)
         }

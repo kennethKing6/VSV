@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../api/Baseurl";
 import { APIBaseService } from "../../api/apiBaseService";
+import { APIQuery } from "../../api/apiQuery";
 
 import { Photo } from "./photo";
 
@@ -15,7 +16,7 @@ class PhototequeList {
     #setup(list = []) {
         this.rowList = list.map((value) => {
 
-            const {attributes} = value
+            const { attributes } = value
 
             const { titre, photo } = attributes
             const { data = [] } = photo
@@ -23,11 +24,11 @@ class PhototequeList {
             let imagesList = []
 
             data.forEach(element => {
-                const {attributes: itemAttributes} = element
-                const {url} = itemAttributes
-                const finalUrl = url.includes("https")?url:BASE_URL + url
+                const { attributes: itemAttributes } = element
+                const { url } = itemAttributes
+                const finalUrl = url.includes("https") ? url : BASE_URL + url
                 imagesList.push(finalUrl)
-                
+
             });
 
 
@@ -40,25 +41,33 @@ class PhototequeList {
 
     }
 
-    getLibraryList(){
+    getLibraryList() {
         return this.rowList
     }
 }
 
-export class Phototeque extends APIBaseService {
+export class Phototeque extends APIQuery {
 
     constructor() {
         super()
     }
 
-    async getPhotos() {
+    async getPhotos(page = 1) {
         try {
-            const response = await this._get(`${BASE_URL}/api/photoques?populate=*`)
+            const response = await this.paginateWithPageNum(`${BASE_URL}/api/photoques?populate=*`, page)
             const { data = [], meta } = response
+
+            //Extract data
 
             const photoList = new PhototequeList(data).getLibraryList()
 
-            return photoList
+            // Extract pageSize
+            const { pagination } = meta
+            const { pageCount } = pagination
+            return {
+                carousel: photoList.reverse(),
+                pageSize: pageCount
+            }
 
 
         } catch (err) {

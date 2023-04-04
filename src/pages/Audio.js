@@ -7,21 +7,30 @@ import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
 import { AudioPage } from '../model/pagesModel/audio/audioPage'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 import VVSFooter from '../components/Footer/VVSFooter'
+import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
+import CenterLayoutPagination from '../components/Pagination/CenterPagination'
 
 export default function Audio() {
 
     const audio = useRef(new AudioPage())
 
     const [audios, setAudios] = useState([])
+    const [page, setPage] = useState(1)
+    const [pageSize, setPageSize] = useState(1)
 
     useEffect(() => {
-        audio.current.getAudios().then((auds) => {
-            setAudios(auds)
+        audio.current.getAudios(pageSize).then((auds) => {
+
+            const { audios, pageSize } = auds
+
+            setAudios(audios)
+            setPageSize(pageSize)
+
         }).catch((err) => {
             throw new Error(err)
         })
 
-    }, [])
+    }, [page])
 
     return (
         <>
@@ -40,6 +49,7 @@ export default function Audio() {
                     })}
                 </CenterLayout>
             </MediumPaddingTopBottom>
+            <CenterLayoutPagination onSelectedPage={(value) => setPage(value)} pageSize={pageSize} />
             <VVSFooter />
         </>)
 }

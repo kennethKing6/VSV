@@ -6,21 +6,27 @@ import CenterLayout from '../components/layout/centerLayout'
 import { ActivityPage } from '../model/pagesModel/activity/activityPage'
 import VVSFooter from '../components/Footer/VVSFooter'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
+import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
+import CenterLayoutPagination from '../components/Pagination/CenterPagination'
+
 export default function Activity() {
 
     const activity = useRef(new ActivityPage())
 
     const [activities, setActivies] = useState([])
+    const [page, setPage] = useState(1)
+    const [pageSize, setPageSize] = useState(1)
 
     useEffect(() => {
-        activity.current.getActivities().then((activities) => {
-            setActivies(activities)
-
+        activity.current.getActivities(page).then((activities) => {
+            const { data, pageSize } = activities
+            setActivies(data)
+            setPageSize(pageSize)
         }).catch((err) => {
             throw new Error(err)
         })
 
-    }, [])
+    }, [page])
 
     return (
         <>
@@ -41,7 +47,10 @@ export default function Activity() {
                     }) : <></>}
                 </CenterLayout>
             </MediumPaddingTopBottom>
-            <VVSFooter/>
+
+            <CenterLayoutPagination onSelectedPage={(value) => setPage(value)} pageSize={pageSize} />
+
+            <VVSFooter />
         </>
     )
 }
