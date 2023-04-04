@@ -12,8 +12,7 @@ export default function CommonAvatar({ url = "http://localhost:1337/uploads/3q_Y
                 variant='square'
                 alt={alt}
                 src={url}
-
-                sx={sx?sx:{ width: width, height: height, objectFit: 'cover' }}
+                sx={sx?sx:{ width: width, height: height, objectFit: 'contain' }}
             />
         </div>
     )

@@ -24,9 +24,6 @@ export default function CardVideo({
                 <Typography gutterBottom variant="h5" component="div">{title}</Typography>
                 <Typography variant="body2" color="text.secondary">{caption}</Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Voir plus</Button>
-            </CardActions>
         </Card>
     )
 }

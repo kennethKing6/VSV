@@ -14,21 +14,30 @@ export default function CenterThreeColumnAvatar({
             <Grid item xs={12} sm={4} >
                 {firstList.map((v) => {
                     const { height, url, id } = v
-                    return (<CommonAvatar height={height} key={id} url={url} />)
+                    console.log('url', url)
+                    return (<CommonAvatar sx={styles.item} key={id} url={url} />)
                 })}
             </Grid>
             <Grid item xs={12} sm={4}>
                 {secondList.map((v) => {
                     const { height, url, id } = v
-                    return (<CommonAvatar height={height} key={id} url={url} />)
+                    return (<CommonAvatar sx={styles.item} height={height} key={id} url={url} />)
                 })}
             </Grid>
             <Grid item xs={12} sm={4}>
                 {thirdList.map((v) => {
                     const { height, url, id } = v
-                    return (<CommonAvatar height={height} key={id} url={url} />)
+                    return (<CommonAvatar sx={styles.item} height={height} key={id} url={url} />)
                 })}
             </Grid>
         </CenterLayout>
     )
+}
+
+const styles = {
+    item: {
+        width: '100%',
+        height: 'fit-content',
+        objectFit: 'contain'
+    }
 }

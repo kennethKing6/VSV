@@ -7,6 +7,7 @@ import Video from './pages/Video';
 import Audio from './pages/Audio';
 import Contact from './pages/Contact';
 import ActivityDetails from './pages/ActivityDetails';
+import PagesLibrary from './pages/PagesLibrary';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
           <Route path="/audio" element={<Audio/>} />
           <Route path="/video" element={<Video/>} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/libraryDetails" element={<PagesLibrary/>} />
+
       </Routes>
     </BrowserRouter>
 
