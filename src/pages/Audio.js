@@ -5,6 +5,8 @@ import CommonPageHeader from '../components/header/commonPageHeader'
 import CenterLayout from '../components/layout/centerLayout'
 import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
 import { AudioPage } from '../model/pagesModel/audio/audioPage'
+import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
+import VVSFooter from '../components/Footer/VVSFooter'
 
 export default function Audio() {
 
@@ -24,19 +26,20 @@ export default function Audio() {
     return (
         <>
             <CommonPageHeader />
-            <MediumTopMarginLayout>
+            <MediumPaddingTopBottom>
                 <CenterLayout>
                     {audios.map((data) => {
 
-                        const { caption, description, image, audioURL, imageURL,title } = data
+                        const { caption, description, image, audioURL, imageURL, title } = data
 
                         return (
-                            <Grid item  sm={6} md={4} xs={12}>
+                            <Grid item sm={6} md={4} xs={12}>
                                 <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} />
                             </Grid>
                         )
                     })}
                 </CenterLayout>
-            </MediumTopMarginLayout>
+            </MediumPaddingTopBottom>
+            <VVSFooter />
         </>)
 }

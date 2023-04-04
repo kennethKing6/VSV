@@ -6,6 +6,8 @@ import CenterLayout from '../components/layout/centerLayout'
 import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
 import { VideoPage } from '../model/pagesModel/video/activityPage'
 import { SPACING } from '../theme/spacing'
+import VVSFooter from '../components/Footer/VVSFooter'
+import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 
 export default function Video() {
 
@@ -26,7 +28,7 @@ export default function Video() {
     return (
         <>
             <CommonPageHeader />
-            <MediumTopMarginLayout>
+            <MediumPaddingTopBottom>
                 <CenterLayout>
                     {videos.map((video) => {
                         const { caption, url, title, description } = video
@@ -34,7 +36,8 @@ export default function Video() {
                             src={url} title={title} description={description} /></Grid>)
                     })}
                 </CenterLayout>
-            </MediumTopMarginLayout>
+            </MediumPaddingTopBottom>
+            <VVSFooter />
         </>
     )
 }
