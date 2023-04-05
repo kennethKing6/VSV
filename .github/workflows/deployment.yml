@@ -24,6 +24,5 @@ jobs:
         aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
         dot_env: ${{ secrets.DOT_ENV }}
         aws_resource_identifier: react-app-website
-        tf_state_bucket_destroy: true
         tf_state_bucket: ${{ vars.AWS_S3_BUCKET_NAME }}
         additional_tags: ${{ vars.AWS_ADDITIONAL_TAGS }}
