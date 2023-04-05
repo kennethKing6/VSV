@@ -23,5 +23,4 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
         dot_env: ${{ secrets.DOT_ENV }}
-        tf_state_bucket: elasticbeanstalk-af-south-1-925624186551
         aws_resource_identifier: react-app-website
