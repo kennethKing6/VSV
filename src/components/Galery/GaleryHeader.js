@@ -33,7 +33,7 @@ export default function GaleryHeader({
                                     sx={{
                                         height:350,
                                         width: '100%',
-                                        objectFit:'fill',
+                                        objectFit:'contain',
                                     }} />
                             </Grid>
                         )
