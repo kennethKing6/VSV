@@ -31,9 +31,9 @@ export default function GaleryHeader({
                             <Grid item md={the3Items.length + 1} xs={12} key={`${url}${index}`} >
                                 <Avatar src={url} variant='square'
                                     sx={{
-                                        height: '100%',
+                                        height:350,
                                         width: '100%',
-                                        objectFit:'contain'
+                                        objectFit:'fill',
                                     }} />
                             </Grid>
                         )
