@@ -5,15 +5,7 @@ on:
     branches:
     - main
 jobs:
-  # test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Run Lint Test
-  #       run: npm run lint
-  #     - name: Run test
-  #       run: npm run test
   deploy:
-    # needs: test
     runs-on: ubuntu-latest
     env:
       REACT_APP_AWS_ACCESS_KEY_ID_ENV: ${{secrets.AWS_ACCESS_KEY_ID}}
