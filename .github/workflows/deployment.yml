@@ -28,4 +28,3 @@ jobs:
         dot_env: ${{ secrets.DOT_ENV }}
         tf_state_bucket: ${{ vars.AWS_S3_BUCKET_NAME }}
         aws_mount_efs_id: ${{ vars.AWS_MOUNT_EFS_ID }}
-        tf_state_bucket_destroy: "true"
