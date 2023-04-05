@@ -15,6 +15,7 @@ export default function GaleryHeader({
 
     const navigation = useNavigate()
 
+    
     return (
         <>
             <MediumTitle text={title} textColor={Colors.primary_black} />
