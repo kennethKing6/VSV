@@ -7,6 +7,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_AWS_ACCESS_KEY_ID_ENV: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      REACT_APP_AWS_SECRET_ACCESS_KEY_ENV: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      REACT_APP_AWS_REGION_ENV: ${{ vars.REACT_APP_AWS_REGION_ENV }}
+      REACT_APP_EMAIL_SENDER_ENV: ${{ vars.REACT_APP_EMAIL_SENDER_ENV }}
+      REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
     steps:
     - name: Checkout source code
       uses: actions/checkout@v2
@@ -17,3 +23,4 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
         dot_env: ${{ secrets.DOT_ENV }}
+        tf_state_bucket: vivre-sans-violence-images
