@@ -21,8 +21,7 @@ jobs:
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
-        location_constraint: ${{ vars.REACT_APP_AWS_REGION_ENV }}
+        aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
         dot_env: ${{ secrets.DOT_ENV }}
         aws_resource_identifier: react-app-website
         tf_state_bucket_destroy: true
