@@ -15,12 +15,17 @@ jobs:
       REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Deploy to ec2
       uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
+        aws_resource_identifier: ${{ vars.AWS_RESOURCE_IDENTIFER }}
+        ec2_instance_profile: ${{ vars.AWS_EC2_INSTANCE_PROFILE }}
+        ec2_instance_type: ${{ vars.AWS_INSTANCE_PROFILE }}
         dot_env: ${{ secrets.DOT_ENV }}
         tf_state_bucket: ${{ vars.AWS_S3_BUCKET_NAME }}
+        aws_mount_efs_id: ${{ vars.AWS_MOUNT_EFS_ID }}
+        tf_state_bucket_destroy: "true"
