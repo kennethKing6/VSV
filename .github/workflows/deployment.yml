@@ -25,9 +25,9 @@ jobs:
           aws-region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
       
       - name: Create SSH file
-        run: |
-          touch ec2-strapi-key-pair.pem
-          echo ${{ vars.SSH_KEY }} > ec2-strapi-key-pair.pem
-          
+        run: touch ssh.pem
+        run: printf ${{ vars.SSH_KEY }} > myfile.txt
+        run: ls
+                    
           
         
