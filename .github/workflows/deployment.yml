@@ -33,17 +33,18 @@ jobs:
       - name: Create SSH file
         run: |
           touch ssh.pem
-          echo ${{ secrets.SSH_KEY }} >  ssh.pem
+          ls
+      #     echo ${{ secrets.SSH_KEY }} >  ssh.pem
       
-      - name: Copy application files to EC2 instance
-        run: |
-          scp -i "ssh.pem" -r VVS ubuntu@ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
-          cd VVS
-          docker-compose up --build
+      # - name: Copy application files to EC2 instance
+      #   run: |
+      #     scp -i "ssh.pem" -r VVS ubuntu@ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
+      #     cd VVS
+      #     docker-compose up --build
 
 
-      - name: start the application
-        run: |
-            cd /home/ubuntu
-            docker-compose up --build
+      # - name: start the application
+      #   run: |
+      #       cd /home/ubuntu
+      #       docker-compose up --build
         
