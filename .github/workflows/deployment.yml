@@ -26,8 +26,10 @@ jobs:
       
       - name: Create SSH file
         run: |
+          key_var="${vars.SSH_KEY}"
+          key_var_string=$(printf "%s" "$key_var")
           touch ssh.pem
-          printf ${{ vars.SSH_KEY }} > ssh.pem
+          echo "$key_var_string" > ssh.pem
           ls
                     
           
