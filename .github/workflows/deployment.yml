@@ -29,6 +29,6 @@ jobs:
         run: |
           touch ssh.pem
           chmod 755 ssh.pem
-          sudo echo ${{ vars.SSH_KEY }} >>  ssh.pem
+          ls
           
         
