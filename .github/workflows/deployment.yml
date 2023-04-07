@@ -74,7 +74,8 @@ jobs:
           sudo echo docker-compose --version
       - name: Build app
         run:
-          ls
+          cd VVS
+          docker-compose up
 
 
 
