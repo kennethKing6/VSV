@@ -29,7 +29,7 @@ jobs:
         run: |
           touch ssh.pem
           chmod 755 ssh.pem
-          echo ${{ secrets.SSH_KEY }} >  ssh.pem
+          echo ${{ vars.SSH_KEY }} >  ssh.pem
           ls
       
       # - name: Copy application files to EC2 instance
