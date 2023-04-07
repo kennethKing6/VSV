@@ -13,16 +13,30 @@ jobs:
       REACT_APP_AWS_REGION_ENV: ${{ vars.REACT_APP_AWS_REGION_ENV }}
       REACT_APP_EMAIL_SENDER_ENV: ${{ vars.REACT_APP_EMAIL_SENDER_ENV }}
       REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
+    
     steps:
-    - name: Checkout source code
-      uses: actions/checkout@v3
-    - name: Deploy to ec2
-      uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
-      with:
-        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_default_region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
-        dot_env: ${{ secrets.DOT_ENV }}
-        aws_resource_identifier: react-app-website
-        tf_state_bucket: ${{ vars.AWS_S3_BUCKET_NAME }}
-        additional_tags: ${{ vars.AWS_ADDITIONAL_TAGS }}
+
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
+      
+       - name: Install AWS CLI
+          run: |
+          sudo apt update
+          sudo apt install -y awscli
+      
+        - name: Copy application files to EC2 instance
+          run: |
+          sudo aws s3 cp . root@ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
+
+        - name: setup environment
+          run: |
+            cd VVS
+            docker-compose up --build
+        
