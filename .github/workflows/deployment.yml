@@ -55,8 +55,8 @@ jobs:
       - name: Copy file to EC2 instance
         run: |
           sudo apt install openssh-server openssh-client
-          scp -r pwd ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
          
+
 
 
 
