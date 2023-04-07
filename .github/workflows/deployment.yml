@@ -51,7 +51,7 @@ jobs:
           username: ubuntu
           key: ec2-strapi-key-pair.pem
           remote_dir: '~'
-          recursive: 'false
+          recursive: 'true'
       
       - name: SSH onto the EC2 instance
         run: |
