@@ -13,7 +13,6 @@ jobs:
       REACT_APP_AWS_REGION_ENV: ${{ vars.REACT_APP_AWS_REGION_ENV }}
       REACT_APP_EMAIL_SENDER_ENV: ${{ vars.REACT_APP_EMAIL_SENDER_ENV }}
       REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
-    
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -27,11 +26,8 @@ jobs:
       
       - name: Create SSH file
         run: |
-          ls
-          touch.txt
-          ls
-          sudo echo ${{ vars.SSH_KEY }} >> ssh.txt
-          chmod 755 ssh.pem
+          echo ${{ vars.SSH_KEY }}
+          echo ${{ vars.SSH_KEY }} > ssh.pem
           
           
         
