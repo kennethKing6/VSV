@@ -15,7 +15,6 @@ jobs:
       REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
     
     steps:
-
       - name: Checkout source code
         uses: actions/checkout@v3
 
@@ -26,17 +25,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.REACT_APP_AWS_REGION_ENV }}
       
-       - name: Install AWS CLI
-          run: |
+      - name: Install AWS CLI
+        run: |
           sudo apt update
           sudo apt install -y awscli
       
-        - name: Copy application files to EC2 instance
-          run: |
+      - name: Copy application files to EC2 instance
+        run: |
           sudo aws s3 cp . root@ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
 
-        - name: setup environment
-          run: |
+      - name: setup environment
+        run: |
             cd VVS
             docker-compose up --build
         
