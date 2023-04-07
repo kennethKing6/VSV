@@ -35,20 +35,20 @@ jobs:
       - name: Create production environment file
         run: |
           touch .env.production
-          echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=env.REACT_APP_AWS_ACCESS_KEY_ID_ENV" >> .env.production
-          echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV" >> .env.production
-          echo "REACT_APP_AWS_REGION_ENV=env.REACT_APP_AWS_REGION_ENV" >> .env.production
-          echo "REACT_APP_EMAIL_SENDER_ENV=env.REACT_APP_EMAIL_SENDER_ENV" >> .env.production
-          echo "REACT_APP_EMAIL_RECIPIENT_ENV=env.REACT_APP_EMAIL_RECIPIENT_ENV" >> .env.production
-          echo "REACT_APP_MAPBOX_TOKEN=env.REACT_APP_MAPBOX_TOKEN" >> .env.production
+          echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env.production
+          echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env.production
+          echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env.production
+          echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env.production
+          echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env.production
+          echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env.production
       
       - name: Copy file to EC2 instance
-        run: scp -i ssh.pem -r . ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
+        run: scp -i "ssh.pem" -r . ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
       
       - name: SSH onto the EC2 instance
         run: |
-          ssh -i "ssh.pem" root@ec2-13-246-7-73.af-south-1.compute.amazonaws.com
-      
+          ssh -i "ssh.pem" ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+
       - name: Setup Ubuntu EC2 Environment
         run: |
           sudo apt-get update
