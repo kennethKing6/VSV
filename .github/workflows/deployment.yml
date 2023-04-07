@@ -14,7 +14,6 @@ jobs:
       REACT_APP_EMAIL_SENDER_ENV: ${{ vars.REACT_APP_EMAIL_SENDER_ENV }}
       REACT_APP_EMAIL_RECIPIENT_ENV: ${{ vars.REACT_APP_EMAIL_RECIPIENT_ENV }}
       REACT_APP_MAPBOX_TOKEN: ${{ secrets.REACT_APP_MAPBOX_TOKEN }}
-      SSH_KEY: ${{ secrets.SSH_KEY }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -43,11 +42,11 @@ jobs:
           echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env.production
       
       - name: Copy file to EC2 instance
-        run: scp -i "ssh.pem" -r . ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
+        run: scp -i "ec2-strapi-key-pair.pem" -r . ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
       
       - name: SSH onto the EC2 instance
         run: |
-          ssh -i "ssh.pem" ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+          ssh -i "ec2-strapi-key-pair.pem" ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
 
       - name: Setup Ubuntu EC2 Environment
         run: |
