@@ -42,7 +42,9 @@ jobs:
           echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env.production
       
       - name: Copy file to EC2 instance
-        run: scp -i "ec2-strapi-key-pair.pem" -r . ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
+        run: |
+          ssh-keygen -R ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+          scp -i ec2-strapi-key-pair.pem -r . ec2-13-245-37-136.af-south-1.compute.amazonaws.com:/
       
       - name: SSH onto the EC2 instance
         run: |
