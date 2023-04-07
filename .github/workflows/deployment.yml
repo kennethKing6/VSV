@@ -27,8 +27,9 @@ jobs:
       
       - name: Create SSH file
         run: |
-          sudo echo ${{ secrets.SSH_KEY }} > ssh.pem
-          chmod 755 ssh.pem
           ls
+          sudo echo ${{ vars.SSH_KEY }} >> ssh.pem
+          chmod 755 ssh.pem
+          
           
         
