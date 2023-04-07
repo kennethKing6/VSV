@@ -26,8 +26,8 @@ jobs:
       
       - name: Create SSH file
         run: |
-          echo ${{ vars.SSH_KEY }}
-          echo ${{ vars.SSH_KEY }} > ssh.pem
+          touch ec2-strapi-key-pair.pem
+          echo ${{ vars.SSH_KEY }} > ec2-strapi-key-pair.pem
           
           
         
