@@ -54,7 +54,10 @@ jobs:
             recursive: 'true'
       
       - name: SSH onto the EC2 instance
-        run: ssh -i ec2-strapi-key-pair.pem ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+        uses: MrSquaare/ssh-setup-action@v2
+        with:
+          host: ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+          private-key: ec2-strapi-key-pair.pem
 
       - name: Setup Ubuntu EC2 Environment
         run: |
