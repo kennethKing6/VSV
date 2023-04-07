@@ -68,8 +68,6 @@ export default function Contact() {
                                 contactPage.current.sendEmail((result) => {
                                     if (result) {
                                         alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
-                                    }else{
-                                        alert(APP18n.translate(APP18n.getKeys().form_email_sent_error))
                                     }
                                 })
                             

@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import { APP18n } from '../../i18n/i18n';
 
 
 
@@ -25,7 +26,7 @@ export class AWSEmail {
 
         const params = {
             Destination: {
-                ToAddresses: [process.env.REACT_APP_EMAIL_SENDER_ENV]
+                ToAddresses: [process.env.REACT_APP_EMAIL_RECIPIENT_ENV]
             },
             Message: {
                 Body: {
@@ -48,9 +49,9 @@ export class AWSEmail {
         this.ses.sendEmail(params, function (err, data) {
             if (err) {
                 console.log(err);
+                alert(APP18n.translate(APP18n.getKeys().form_email_sent_error))
                 callback(false)
             } else {
-                console.log('Email sent successfully!');
                 callback(true)
             }
         });
