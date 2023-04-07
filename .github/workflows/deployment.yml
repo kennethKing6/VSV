@@ -30,17 +30,5 @@ jobs:
           touch ssh.pem
           chmod 755 ssh.pem
           echo ${{ vars.SSH_KEY }} >>  ssh.pem
-          ls
-      
-      # - name: Copy application files to EC2 instance
-      #   run: |
-      #     scp -i "ssh.pem" -r VVS ubuntu@ec2-13-246-7-73.af-south-1.compute.amazonaws.com:/
-      #     cd VVS
-      #     docker-compose up --build
-
-
-      # - name: start the application
-      #   run: |
-      #       cd /home/ubuntu
-      #       docker-compose up --build
+          
         
