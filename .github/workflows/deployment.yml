@@ -27,9 +27,9 @@ jobs:
       
       - name: Create SSH file
         run: |
-          touch ssh.pem
-          echo "${{ secrets.SSH_KEY }}" > ssh.pem
-          cat ssh.pem
+          touch ec2-strapi-key-pair.pem
+          echo "${{ secrets.SSH_KEY }}" > ec2-strapi-key-pair.pem
+          cat ec2-strapi-key-pair.pem
 
       - name: Create production environment file
         run: |
