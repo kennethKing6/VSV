@@ -26,9 +26,9 @@ jobs:
       
       - name: Create SSH file
         run: |
-        touch ssh.pem
-        printf ${{ vars.SSH_KEY }} > ssh.pem
-        ls
+          touch ssh.pem
+          printf ${{ vars.SSH_KEY }} > ssh.pem
+          ls
                     
           
         
