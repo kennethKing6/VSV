@@ -53,15 +53,19 @@ jobs:
           echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
       
       - name: Copy file to EC2 instance
-        run: |
-            curl --insecure --user ubuntu:ec2-strapi-key-pair.pem -T Dockerfile sftp:ec2-13-245-37-136.af-south-1.compute.amazonaws.com
-          
-        
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.SSH_KEY }}
 
-
-
-
-
+      - name: SSH to EC2 instance and run command
+        uses: appleboy/ssh-action@master
+        with:
+          host:  ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            echo "Hello from the EC2 instance!"
                     
           
         
