@@ -90,6 +90,7 @@ jobs:
             nvm install node
             node --version
             sudo npm install -g create-react-app
+            sudo npm install
 
             sudo touch .env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
@@ -99,9 +100,9 @@ jobs:
             sudo echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
 
-            
+
             ls -al
-            sudo docker-compose up -d
+            sudo docker-compose up --build -d 
             sudo echo "Successfully started the server"
                     
           
