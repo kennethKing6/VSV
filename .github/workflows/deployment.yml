@@ -87,7 +87,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo rm -rf /home/ubuntu
+            sudo rm -rf /home/ubuntu/VSV
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -all
 
