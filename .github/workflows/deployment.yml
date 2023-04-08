@@ -91,7 +91,7 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo apt-get install nodejs npm
+            sudo apt-get install -y nodejs npm && y
             node -v
             npm -v
 
