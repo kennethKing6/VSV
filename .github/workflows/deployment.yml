@@ -91,11 +91,9 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo apt-get install nodejs
-            sudo apt-get install npm
+            sudo apt-get install nodejs npm
             node -v
             npm -v
-            sudo npm install -g create-react-app
 
       - name: SSH onto EC2 and run npm install
         uses: appleboy/ssh-action@master
