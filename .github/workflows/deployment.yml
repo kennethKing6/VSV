@@ -77,7 +77,8 @@ jobs:
             sudo apt install python3-pip
             sudo pip3 install docker-compose
             docker-compose --version
-            git clone https://github.com/kennethKing6/VSV
+            git clone https://github.com/kennethKing6/VSV && ${{ secrets.USERNAME_GITHUB }} && && ${{ secrets.SSH_GITHUB }}
+            ls -al
             cd VSV
             touch .env
             echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
