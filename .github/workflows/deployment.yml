@@ -68,25 +68,20 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo apt update
-            sudo apt upgrade
-            sudo apt install apt-transport-https ca-certificates curl software-properties-common
+            sudo apt-get update
+            sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
             curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
             sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-            sudo apt update
-            sudo apt install docker-ce
+            sudo apt-get update
+            sudo apt-get install docker-ce docker-ce-cli containerd.io
             sudo docker run hello-world
-            sudo apt install python3-pip
-            sudo pip3 install docker-compose
-            curl -sSL https://get.docker.com/ | sh
-            sudo systemctl status docker
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            sudo echo docker-compose --version
+            docker-compose --version
             sudo rm -r VVS
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            sudo ls -al
-            sudo cd VSV
+            ls -al
+            cd VSV
             sudo touch .env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
