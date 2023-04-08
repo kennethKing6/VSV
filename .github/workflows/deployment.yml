@@ -59,7 +59,7 @@ jobs:
             ${{ secrets.SSH_KEY }}
             ${{ secrets.USERNAME_GITHUB }}
             {{ secrets.SSH_GITHUB }}
-            
+
       - name: SSH to EC2 instance and run command
         uses: appleboy/ssh-action@master
         with:
@@ -68,18 +68,20 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo apt update
-            sudo apt upgrade
-            sudo apt install apt-transport-https ca-certificates curl software-properties-common
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-            sudo apt update
-            sudo apt install docker-ce
-            sudo docker run hello-world
-            sudo apt install python3-pip
-            sudo pip3 install docker-compose
-            docker-compose --version
-            git clone https://github.com/kennethKing6/VSV && ${{ secrets.USERNAME_GITHUB }} && && ${{ secrets.SSH_GITHUB }}
+            # sudo apt update
+            # sudo apt upgrade
+            # sudo apt install apt-transport-https ca-certificates curl software-properties-common
+            # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+            # sudo apt update
+            # sudo apt install docker-ce
+            # sudo docker run hello-world
+            # sudo apt install python3-pip
+            # sudo pip3 install docker-compose
+            # docker-compose --version
+            git clone https://github.com/kennethKing6/VSV 
+            echo ${{ secrets.USERNAME_GITHUB }} 
+            echo ${{ secrets.SSH_GITHUB }}
             ls -al
             cd VSV
             touch .env
