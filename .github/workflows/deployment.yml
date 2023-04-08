@@ -91,7 +91,7 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo apt-get install -y nodejs npm && y
+            sudo apt-get install -y nodejs npm
             node -v
             npm -v
 
@@ -104,7 +104,7 @@ jobs:
           port: 22
           script: |
             cd VVS
-            sudo npm install
+            npm install
 
       - name: Get current directory
         uses: appleboy/ssh-action@master
