@@ -92,6 +92,7 @@ jobs:
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
             ls -al
             sudo docker-compose up
+            sudo echo "Successfully started the server"
                     
           
         
