@@ -79,7 +79,7 @@ jobs:
             sudo apt install python3-pip
             sudo pip3 install docker-compose
             docker-compose --version
-            sudo git clone https://${{ secrets.USERNAME_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+            sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             # ls -al
             # cd VSV
             # touch .env
