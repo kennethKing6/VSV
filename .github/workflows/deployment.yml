@@ -54,7 +54,8 @@ jobs:
       
       - name: Copy file to EC2 instance
         run: |
-          ssh -T -i "ec2-strapi-key-pair.pem" ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
+          ssh-keyscan ec2-strapi-key-pair.pem >> ~/.ssh/known_hosts
+          ssh -T -i ec2-strapi-key-pair.pem ubuntu@ec2-13-245-37-136.af-south-1.compute.amazonaws.com
           ls
         
 
