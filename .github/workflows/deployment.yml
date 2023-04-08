@@ -59,12 +59,12 @@ jobs:
             ${{ secrets.SSH_KEY }}
             ${{ secrets.USERNAME_GITHUB }}
             {{ secrets.SSH_GITHUB }}
-
-      - name: SSH to EC2 instance and run command
+      
+      - name: install docker and docker-compose on EC2
         uses: appleboy/ssh-action@master
         with:
-          host: ec2-13-245-38-229.af-south-1.compute.amazonaws.com
-          username: ubuntu
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
@@ -78,10 +78,28 @@ jobs:
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
             sudo docker-compose --version
+            ls -al
+
+       - name: Clone VVS project on EC2
+         uses: appleboy/ssh-action@master
+         with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
             sudo rm -r VVS
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -al
 
+      - name: Install nodejs and reactjs on ec2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
             sudo apt-get update
             sudo apt-get install nodejs
             sudo apt-get install npm
@@ -89,8 +107,37 @@ jobs:
             npm -v
             sudo npm install -g create-react-app
 
+      - name: SSH onto EC2 and run npm install
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd VVS
+            sudo npm install
+
+      - name: Get current directory
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            echo "::set-env name=MY_DIR::$(pwd)"
+
+      - name: SSH to EC2 instance and run docker-compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
             cd VSV
-            sudo touch .env
+            sudo touch $MY_DIR/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
