@@ -78,7 +78,11 @@ jobs:
             sudo docker run hello-world
             sudo apt install python3-pip
             sudo pip3 install docker-compose
-            sudo docker-compose --version
+            curl -sSL https://get.docker.com/ | sh
+            sudo systemctl status docker
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            sudo echo docker-compose --version
             sudo rm -r VVS
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             sudo ls -al
