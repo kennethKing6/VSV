@@ -52,7 +52,7 @@ jobs:
           echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
           echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
       
-      - name: Copy file to EC2 instance
+      - name: Save private key on github actions server
         uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: |
@@ -66,8 +66,28 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            echo "Hello from the EC2 instance!"
+            sudo apt update
+            sudo apt upgrade
+            sudo apt install apt-transport-https ca-certificates curl software-properties-common
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+            sudo apt update
+            sudo apt install docker-ce
+            sudo docker run hello-world
+            sudo apt install python3-pip
+            sudo pip3 install docker-compose
+            docker-compose --version
+            git clone https://github.com/kennethKing6/VSV
+            cd VSV
+            touch .env
+            echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
+            echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
+            echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
+            echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
+            echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
+            echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
             ls -al
+            docker-compose up
                     
           
         
