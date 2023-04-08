@@ -32,16 +32,6 @@ jobs:
           chmod 400 ec2-strapi-key-pair.pem
           cat ec2-strapi-key-pair.pem
 
-      - name: Create production environment file
-        run: |
-          touch .env.production
-          echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env.production
-          echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env.production
-          echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env.production
-          echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env.production
-          echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env.production
-          echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env.production
-
       - name: Create .env environment file
         run: |
           touch .env
@@ -80,9 +70,9 @@ jobs:
             sudo docker-compose --version
             ls -al
 
-       - name: Clone VVS project on EC2
-         uses: appleboy/ssh-action@master
-         with:
+      - name: Clone VVS project on EC2
+        uses: appleboy/ssh-action@master
+        with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
           username: ${{ vars.EC2_USERNAME_INSTANCE }}
           key: ${{ secrets.SSH_KEY }}
