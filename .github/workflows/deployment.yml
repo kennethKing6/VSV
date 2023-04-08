@@ -88,8 +88,8 @@ jobs:
           port: 22
           script: |
             sudo rm -rf /home/ubuntu
-            git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            ls 
+            sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+            ls -all
 
       - name: Install nodejs and reactjs on ec2
         uses: appleboy/ssh-action@master
