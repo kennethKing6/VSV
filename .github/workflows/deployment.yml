@@ -54,7 +54,8 @@ jobs:
       
       - name: Copy file to EC2 instance
         run: |
-          sudo apt install openssh-server openssh-client sshpass
+          sudo apt install sshpass
+          ssh-copy-id -i ec2-strapi-key-pair.pem.pub ubuntu@13.245.37.136
           sshpass -f "ec2-strapi-key-pair.pem" scp -r ../VVS ubuntu@13.245.37.136:/
         
 
