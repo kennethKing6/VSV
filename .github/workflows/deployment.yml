@@ -87,9 +87,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            rm -rf $MY_DIR/VSV
+            rm -rf /home/ubuntu
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            ls -al
+            ls 
 
       - name: Install nodejs and reactjs on ec2
         uses: appleboy/ssh-action@master
