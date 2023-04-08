@@ -79,18 +79,18 @@ jobs:
             sudo apt install python3-pip
             sudo pip3 install docker-compose
             docker-compose --version
-            git clone https://${{ secrets.USERNAME_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            ls -al
-            cd VSV
-            touch .env
-            echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
-            echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
-            echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
-            echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
-            echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
-            echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
-            ls -al
-            docker-compose up
+            sudo git clone https://${{ secrets.USERNAME_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+            # ls -al
+            # cd VSV
+            # touch .env
+            # echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
+            # echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
+            # echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
+            # echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
+            # echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
+            # echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
+            # ls -al
+            # docker-compose up
                     
           
         
