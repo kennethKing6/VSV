@@ -54,7 +54,7 @@ jobs:
       
       - name: Copy file to EC2 instance
         run: |
-            curl --insecure --user ubuntu:${{ secrets.SSH_KEY }} -T Dockerfile sftp:ec2-13-245-37-136.af-south-1.compute.amazonaws.com/
+            curl --insecure --user ubuntu:ec2-strapi-key-pair.pem -T Dockerfile sftp:ec2-13-245-37-136.af-south-1.compute.amazonaws.com/
           
         
 
