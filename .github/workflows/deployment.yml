@@ -77,11 +77,20 @@ jobs:
             sudo docker run hello-world
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            docker-compose --version
+            sudo docker-compose --version
             sudo rm -r VVS
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -al
+
             cd VSV
+            # Install nodejs and reactjs
+            sudo apt-get update
+            sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates
+            curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+            nvm install node
+            node --version
+            sudo npm install -g create-react-app
+
             sudo touch .env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
@@ -89,6 +98,8 @@ jobs:
             sudo echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
             sudo echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
+
+            
             ls -al
             sudo docker-compose up -d
             sudo echo "Successfully started the server"
