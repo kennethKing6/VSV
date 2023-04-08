@@ -57,7 +57,9 @@ jobs:
         with:
           ssh-private-key: |
             ${{ secrets.SSH_KEY }}
-
+            ${{ secrets.USERNAME_GITHUB }}
+            {{ secrets.SSH_GITHUB }}
+            
       - name: SSH to EC2 instance and run command
         uses: appleboy/ssh-action@master
         with:
