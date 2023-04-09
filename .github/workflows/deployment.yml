@@ -161,7 +161,7 @@ jobs:
             pm2 delete all
             pm2 start npm -- run production
             pm2 save
-            sudo pm2 list
+            pm2 list
                     
           
         
