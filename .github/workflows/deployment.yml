@@ -144,7 +144,7 @@ jobs:
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
             . ~/.nvm/nvm.sh
             nvm install 16.19.1
-            nvm use 16.19.1
+            nvm use --force 16.19.1
             sudo npm install -g serve
 
 
@@ -158,8 +158,9 @@ jobs:
           script: |
             cd ~/VSV
             sudo npm run build
-            sudo pm2 delete all
-            sudo pm2 start npm -- run production
+            pm2 delete all
+            pm2 start npm -- run production
+            pm2 save
             sudo pm2 list
                     
           
