@@ -138,13 +138,14 @@ jobs:
           script: |
             cd ~/VSV
             sudo npm i -g npm@8.5.1
-            sudo npm install pm2 -g
-            sudo pm2 stop vvs
+            sudo npm install pm2@latest -g
+            pm2 update
+            sudo pm2 delete all
 
             sudo npm run build
             sudo npm install -g serve
-            sudo pm2 delete all
             sudo pm2 start npm -- run production
+            sudo pm2 list
                     
           
         
