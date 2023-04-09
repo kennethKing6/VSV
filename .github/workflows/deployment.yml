@@ -125,13 +125,13 @@ jobs:
           script: |
             cd ~/VSV
             sudo touch ~/VSV/.env
+            chmod 644 .env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
             sudo echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
             sudo echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
-
             ls -al
             sudo docker-compose up --build -d 
             sudo echo "Successfully started the server"
