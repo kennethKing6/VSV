@@ -112,7 +112,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            cd VVS
+            cd /home/ubunutu/VVS
             npm install
 
       - name: SSH to EC2 instance and run docker-compose
