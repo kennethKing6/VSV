@@ -50,24 +50,24 @@ jobs:
             ${{ secrets.USERNAME_GITHUB }}
             {{ secrets.SSH_GITHUB }}
       
-      - name: install docker and docker-compose on EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            sudo apt-get update
-            sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-            sudo apt-get update
-            sudo apt-get install docker-ce -y
-            sudo docker version
-            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            sudo docker-compose version
+      # - name: install docker and docker-compose on EC2
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ vars.EC2_HOST_INSTANCE }}
+      #     username: ${{ vars.EC2_USERNAME_INSTANCE }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     port: 22
+      #     script: |
+      #       sudo apt-get update
+      #       sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+      #       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      #       sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      #       sudo apt-get update
+      #       sudo apt-get install docker-ce -y
+      #       sudo docker version
+      #       sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      #       sudo chmod +x /usr/local/bin/docker-compose
+      #       sudo docker-compose version
 
 
 
