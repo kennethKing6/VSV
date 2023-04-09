@@ -81,6 +81,8 @@ jobs:
           script: |
             sudo rm -rf ~/VSV
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+            cd ~/VSV
+            sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -all
 
       - name: Install nodejs and reactjs on ec2
@@ -139,8 +141,10 @@ jobs:
             sudo npm i -g npm@latest
             sudo npm install pm2@latest -g
             pm2 update
-            sudo npm install -g n
-            sudo node -v
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+            . ~/.nvm/nvm.sh
+            nvm install node
+            nvm alias default node
             sudo npm install -g serve
 
 
@@ -154,6 +158,7 @@ jobs:
           script: |
             cd ~/VSV
             sudo npm run build
+            sudo pm2 delete all
             sudo pm2 start npm -- run production
             sudo pm2 list
                     
