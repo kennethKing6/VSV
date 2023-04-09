@@ -123,7 +123,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            cd /home/ubuntu/VSV
+            cd ~/VSV
             sudo touch $MY_DIR/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
