@@ -127,8 +127,7 @@ jobs:
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
             ls -al
             
-      
-      - name: SSH EC2 and run docker-compose
+      - name: SSH EC2 and install pm2,node and serve latest
         uses: appleboy/ssh-action@master
         with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
@@ -137,15 +136,25 @@ jobs:
           port: 22
           script: |
             cd ~/VSV
-            sudo npm i -g npm@8.5.1
+            sudo npm i -g npm@latest
             sudo npm install pm2@latest -g
             pm2 update
             sudo npm install -g n
             sudo node -v
-            sudo npm run build
             sudo npm install -g serve
-            sudo pm2 delete all
-            sudo pm2 start npm -- run production --port 3000
+
+
+      - name: SSH EC2 and build app and run for production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd ~/VSV
+            sudo npm run build
+            sudo pm2 start npm -- run production
             sudo pm2 list
                     
           
