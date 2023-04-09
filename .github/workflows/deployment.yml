@@ -140,10 +140,11 @@ jobs:
             sudo npm i -g npm@8.5.1
             sudo npm install pm2@latest -g
             pm2 update
-            sudo pm2 delete all
-
+            sudo npm install -g n
+            sudo node -v
             sudo npm run build
             sudo npm install -g serve
+            sudo pm2 delete all
             sudo pm2 start npm -- run production --port 3000
             sudo pm2 list
                     
