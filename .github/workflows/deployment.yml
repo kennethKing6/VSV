@@ -144,7 +144,7 @@ jobs:
 
             sudo npm run build
             sudo npm install -g serve
-            sudo pm2 start npm -- run production
+            sudo pm2 start npm -- run production --port 3000
             sudo pm2 list
                     
           
