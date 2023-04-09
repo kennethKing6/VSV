@@ -138,10 +138,13 @@ jobs:
           script: |
             cd ~/VSV
             npm i -g npm@8.5.1
-            sudo systemctl start docker
-            sudo systemctl enable docker
-            sudo usermod -aG docker $USER
-            sudo docker-compose up --build --remove-orphans -d 
+            sudo npm install pm2 -g
+            sudo pm2 stop VSV
+
+            sudo npm run build
+            sudo npm install -g serve
+            sudo pm2 start --name VSV npm -- run production
+
             sudo echo "Successfully started the server"
                     
           
