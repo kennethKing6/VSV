@@ -126,6 +126,7 @@ jobs:
             cd ~/VSV
             sudo touch ~/VSV/.env
             sudo chmod 644 .env
+            sudo chmod 600 .env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
