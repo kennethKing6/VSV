@@ -124,7 +124,7 @@ jobs:
           port: 22
           script: |
             cd ~/VSV
-            sudo touch /home/ubuntu/VSV/.env
+            sudo touch '.env'
             sudo chmod 644 ~/.env
             sudo chmod 600 ~/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
