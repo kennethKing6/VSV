@@ -59,25 +59,17 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+            sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
             curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
             sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
             sudo apt-get update
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
-            sudo docker run hello-world
+            sudo apt-get install docker-ce -y
+            sudo docker version
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            sudo docker-compose --version
-            ls 
-      - name: Get current directory
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            echo "::set-env name=MY_DIR::$(pwd)"
+            sudo docker-compose version
+
+
 
       - name: Clone VVS project on EC2
         uses: appleboy/ssh-action@master
@@ -87,7 +79,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo rm -rf ~/VSV
+            sudo rm -r ~/VSV
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -all
 
@@ -124,6 +116,7 @@ jobs:
           port: 22
           script: |
             cd ~/VSV
+            sudo rm ~/VSV/.en
             sudo touch ~/VSV/.env
             sudo chown ubuntu:ubuntu ~/VSV/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
