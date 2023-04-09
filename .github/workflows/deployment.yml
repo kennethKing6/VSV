@@ -136,6 +136,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
+            sudo cd ~/VSV
             sudo docker-compose up -d 
             sudo echo "Successfully started the server"
                     
