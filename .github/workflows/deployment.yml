@@ -124,10 +124,10 @@ jobs:
           port: 22
           script: |
             cd ~/VSV
-            sudo touch /~.env
-            sudo chmod u+rwx ~/.env
-            sudo chmod 644 ~/.env
-            sudo chmod 600 ~/.env
+            sudo touch ~/VSV/.env
+            sudo chmod u+rwx ~/VSV/.env
+            sudo chmod 644 ~/VSV/.env
+            sudo chmod 600 ~/VSV/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
             sudo echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
