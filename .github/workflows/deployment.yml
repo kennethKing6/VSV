@@ -136,7 +136,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo docker-compose up --build -d 
+            sudo docker-compose up -d 
             sudo echo "Successfully started the server"
                     
           
