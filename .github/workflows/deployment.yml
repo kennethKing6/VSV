@@ -107,7 +107,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            npm install -g create-react-app
+            sudo npm install -g create-react-app
 
       - name: SSH onto EC2 and run npm install
         uses: appleboy/ssh-action@master
