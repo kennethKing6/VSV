@@ -143,11 +143,11 @@ jobs:
             pm2 update
             sudo apt update
             sudo apt install build-essential libssl-dev curl
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+            sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
             source ~/.bashrc
-            nvm install 16.19.1
-            nvm use 16.19.1
-            nvm alias default 16.19.1
+            sudo nvm install 16.19.1
+            sudo nvm use 16.19.1
+            sudo nvm alias default 16.19.1
             sudo npm install -g serve
 
 
@@ -175,7 +175,7 @@ jobs:
             pm2 start npm -- run prod
             pm2 save
             pm2 list
-            nvm list
+            sudo nvm list
                     
           
         
