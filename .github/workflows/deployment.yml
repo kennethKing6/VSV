@@ -80,10 +80,12 @@ jobs:
           port: 22
           script: |
             sudo rm -rf ~/VSV
+            sudo apt-get update
+            sudo apt-get install git
             sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            # cd ~/VSV
-            # sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            # ls -all
+            cd ~/VSV
+            sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+            ls -all
 
       - name: Install nodejs on ec2
         uses: appleboy/ssh-action@master
