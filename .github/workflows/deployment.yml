@@ -167,6 +167,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
+            nvm use 16.19.1
             cd ~/VSV
             pm2 delete all
             pm2 start npm -- run prod
