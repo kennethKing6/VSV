@@ -143,12 +143,13 @@ jobs:
             pm2 update
             sudo apt update
             sudo apt install curl
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | sudo bash
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
             sudo sh -c 'echo "secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$NVM_DIR/versions/node/$(nvm current)/bin\"" >> /etc/sudoers'
             source ~/.bash_profile
+            source ~/.nvm/nvm.sh
             nvm install 16.19.1
-            sudo sudo nvm use 16.19.1
+            nvm use 16.19.1
             sudo npm install -g serve
 
 
@@ -171,7 +172,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo nvm use 16.19.1
+            nvm use 16.19.1
             cd ~/VSV
             pm2 delete all
             pm2 start npm -- run prod
