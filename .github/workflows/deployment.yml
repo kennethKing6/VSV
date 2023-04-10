@@ -85,7 +85,7 @@ jobs:
             sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
             ls -all
 
-      - name: Install nodejs and reactjs on ec2
+      - name: Install nodejs on ec2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
@@ -94,9 +94,20 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo apt-get install -y nodejs npm
+            curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+            sudo apt-get install -y nodejs
             node -v
             npm -v
+
+      - name: Install reactjs on ec2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            npm install -g create-react-app
 
       - name: SSH onto EC2 and run npm install
         uses: appleboy/ssh-action@master
@@ -129,7 +140,7 @@ jobs:
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
             ls -al
             
-      - name: SSH EC2 and install pm2,node and serve latest
+      - name: SSH EC2 and install pm2 and serve latest
         uses: appleboy/ssh-action@master
         with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
@@ -137,21 +148,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo npm i -g npm@latest
             sudo npm install pm2@latest -g
             pm2 update
-            sudo apt update
-            sudo apt install build-essential libssl-dev curl
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-            source ~/.bashrc
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-            sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
-            sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
-            nvm install 16.19.1
-            nvm use v16.19.1
-            nvm alias default v16.19.1
+            node -v
             npm install -g serve
 
 
