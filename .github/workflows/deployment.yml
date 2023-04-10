@@ -101,16 +101,6 @@ jobs:
             node -v
             npm -v
 
-      - name: Install reactjs on ec2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            sudo npm install -g create-react-app
-
       - name: SSH onto EC2 and run npm install
         uses: appleboy/ssh-action@master
         with:
