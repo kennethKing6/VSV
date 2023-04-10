@@ -141,8 +141,10 @@ jobs:
             sudo npm i -g npm@latest
             sudo npm install pm2@latest -g
             pm2 update
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
-            . ~/.nvm/nvm.sh
+            sudo apt update
+            sudo apt install curl
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | sudo bash
+            source ~/.bashrc
             nvm install 16.19.1
             sudo sudo nvm use 16.19.1
             sudo npm install -g serve
