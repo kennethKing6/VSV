@@ -137,21 +137,22 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            cd ~/VSV
             sudo npm i -g npm@latest
             sudo npm install pm2@latest -g
             pm2 update
             sudo apt update
             sudo apt install build-essential libssl-dev curl
-            sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
             source ~/.bashrc
-            export NVM_DIR="$HOME/.nvm" 
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-            sudo nvm install 16.19.1
-            sudo nvm use 16.19.1
-            sudo nvm alias default 16.19.1
-            sudo npm install -g serve
+            sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+            sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+            nvm install 16.19.1
+            nvm use 16.19.1
+            nvm alias default 16.19.1
+            npm install -g serve
 
 
       - name: SSH EC2 and build app 
@@ -178,7 +179,7 @@ jobs:
             pm2 start npm -- run prod
             pm2 save
             pm2 list
-            sudo nvm list
+            nvm list
                     
           
         
