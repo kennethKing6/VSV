@@ -150,8 +150,8 @@ jobs:
             sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
             sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
             nvm install 16.19.1
-            nvm use 16.19.1
-            nvm alias default 16.19.1
+            nvm use v16.19.1
+            nvm alias default v16.19.1
             npm install -g serve
 
 
@@ -179,7 +179,6 @@ jobs:
             pm2 start npm -- run prod
             pm2 save
             pm2 list
-            nvm list
                     
           
         
