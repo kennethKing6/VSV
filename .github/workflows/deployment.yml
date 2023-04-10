@@ -144,11 +144,11 @@ jobs:
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
             . ~/.nvm/nvm.sh
             nvm install 16.19.1
-            nvm use --force 16.19.1
+            nvm use 16.19.1
             sudo npm install -g serve
 
 
-      - name: SSH EC2 and build app and run for production
+      - name: SSH EC2 and build app 
         uses: appleboy/ssh-action@master
         with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
@@ -158,8 +158,18 @@ jobs:
           script: |
             cd ~/VSV
             sudo npm run build
+
+      - name: SSH EC2 and start app  
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd ~/VSV
             pm2 delete all
-            pm2 start npm -- run production
+            pm2 start npm -- run prod
             pm2 save
             pm2 list
                     
