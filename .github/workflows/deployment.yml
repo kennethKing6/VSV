@@ -78,14 +78,18 @@ jobs:
         run: sudo unzip -o build.zip 
       
       - name: Show folders
-        run: ls 
+        run: |
+        ls 
+        ls -l ./ec2-strapi-key-pair.pem
+        ls -l ./build
+        chmod 700 ~/ec2-strapi-key-pair.pem
+        chmod 700 ./build
+
+
       
       - name: Copy build folder to EC2
         run: |
-          touch ec2-strapi-key-pair.pem
-          echo "${{ secrets.SSH_KEY }}" > ec2-strapi-key-pair.pem
-          chmod 400 ec2-strapi-key-pair.pem
-          sudo scp -r -i ~/ec2-strapi-key-pair.pem ~/build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:~/
+          sudo scp -r -i ./ec2-strapi-key-pair.pem ./build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
 
 
             
