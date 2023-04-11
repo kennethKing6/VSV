@@ -81,7 +81,7 @@ jobs:
   
       - name: Copy build folder to EC2
         run: |
-          sudo chown -R ubuntu ./build
+          sudo chown -R  ${{ secrets.USERNAME_GITHUB }} ./build
           scp -r -i ./ec2-strapi-key-pair.pem ./build ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
        
       - name: SSH EC2 and install pm2 and serve latest
