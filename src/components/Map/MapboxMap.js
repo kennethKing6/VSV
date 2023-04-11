@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import { Grid } from '@mui/material';
 import Map, { Marker, FullscreenControl, NavigationControl, MapProvider } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { OFFICE_ADDRESS } from '../../model/utils/OfficeAddress';
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -14,15 +15,15 @@ function MapboxMap() {
     return (
         <Map
             initialViewState={{
-                longitude: -3.916708,
-                latitude: 5.343646,
+                longitude: OFFICE_ADDRESS.longitude,
+                latitude: OFFICE_ADDRESS.latitude,
                 zoom: 12
             }}
             style={{ width: '100%', height: 200 }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         >
-            <Marker longitude={-3.916708} latitude={5.343646}  />
+            <Marker longitude={OFFICE_ADDRESS.longitude} latitude={OFFICE_ADDRESS.latitude} />
             <FullscreenControl />
             <NavigationControl position='top-right' />
 
