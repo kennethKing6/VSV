@@ -86,35 +86,35 @@ jobs:
         run: sudo unzip -o build.zip 
       
       - name: Copy build folder to EC2
-        run: scp -r -i ec2-strapi-key-pair.pem ./build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/var/www/html/
+        run: scp -r -i ec2-strapi-key-pair.pem ./build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
 
 
             
-      # - name: SSH EC2 and install pm2 and serve latest
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ vars.EC2_HOST_INSTANCE }}
-      #     username: ${{ vars.EC2_USERNAME_INSTANCE }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     port: 22
-      #     script: |
-      #       sudo npm install pm2@latest -g
-      #       pm2 update
-      #       node -v
-      #       sudo npm install -g serve
+      - name: SSH EC2 and install pm2 and serve latest
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            sudo npm install pm2@latest -g
+            pm2 update
+            node -v
+            sudo npm install -g serve
 
-      # - name: SSH EC2 and start app  
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ vars.EC2_HOST_INSTANCE }}
-      #     username: ${{ vars.EC2_USERNAME_INSTANCE }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     port: 22
-      #     script: |
-      #       pm2 delete all
-      #       pm2 start serve -- -s build
-      #       pm2 save
-      #       pm2 list
+      - name: SSH EC2 and start app  
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.EC2_HOST_INSTANCE }}
+          username: ${{ vars.EC2_USERNAME_INSTANCE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            pm2 delete all
+            pm2 start serve -- -s build
+            pm2 save
+            pm2 list
                     
           
         
