@@ -61,7 +61,7 @@ jobs:
           ls -all
 
       - name: Install nodejs on github
-        script: |
+        run: |
           sudo apt-get update
           curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
           sudo apt-get install -y nodejs
@@ -69,12 +69,12 @@ jobs:
           npm -v
 
       - name: run npm install on github
-        script: |
+        run: |
           sudo rm -rf node_modules
           sudo npm install
 
       - name: create .env on github
-        script: |
+        run: |
             sudo touch ~/VSV/.env
             sudo chown ubuntu:ubuntu ~/VSV/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
@@ -86,8 +86,7 @@ jobs:
             ls -al
 
       - name: Build app on github
-        run: |
-          sudo npm run build
+        run: sudo npm run build
 
       - name: Archive build folder
         run: zip -r build.zip build/
