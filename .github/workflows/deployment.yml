@@ -50,57 +50,31 @@ jobs:
             ${{ secrets.USERNAME_GITHUB }}
             {{ secrets.SSH_GITHUB }}
       
-      - name: Clone VVS project on EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            sudo rm -rf ~/VSV
-            sudo apt-get update
-            sudo apt-get install git
-            sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            cd ~/VSV
-            sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-            ls -all
+      - name: Clone VVS project on github
+        run: |
+          sudo rm -rf ~/VSV
+          sudo apt-get update
+          sudo apt-get install git
+          sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+          cd ~/VSV
+          sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
+          ls -all
 
-      - name: Install nodejs on ec2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            sudo apt-get update
-            curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            node -v
-            npm -v
+      - name: Install nodejs on github
+        script: |
+          sudo apt-get update
+          curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          node -v
+          npm -v
 
-      - name: SSH onto EC2 and run npm install
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/VSV
-            sudo npm install
+      - name: run npm install on github
+        script: |
+          sudo rm -rf node_modules
+          sudo npm install
 
-      - name: SSH to EC2 instance and create .env
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/VSV
-            sudo rm ~/VSV/.en
+      - name: create .env on github
+        script: |
             sudo touch ~/VSV/.env
             sudo chown ubuntu:ubuntu ~/VSV/.env
             sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
@@ -110,45 +84,57 @@ jobs:
             sudo echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
             sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
             ls -al
+
+      - name: Build app on github
+        run: |
+          sudo npm run build
+
+      - name: Archive build folder
+        run: |
+        zip -r build.zip build/
+
+      - name: Copy build to runner
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME_GITHUB }}
+          password: ${{ secrets.SSH_GITHUB }}
+          source: ./build.zip
+          target: ~/
+
+      - name: Extract build folder
+        run: unzip build.zip
+      
+      - name: Copy build folder to EC2
+        run: scp -r -i ec2-strapi-key-pair.pem ./build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/var/www/html/
+
+
             
-      - name: SSH EC2 and install pm2 and serve latest
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            sudo npm install pm2@latest -g
-            pm2 update
-            node -v
-            sudo npm install -g serve
+      # - name: SSH EC2 and install pm2 and serve latest
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ vars.EC2_HOST_INSTANCE }}
+      #     username: ${{ vars.EC2_USERNAME_INSTANCE }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     port: 22
+      #     script: |
+      #       sudo npm install pm2@latest -g
+      #       pm2 update
+      #       node -v
+      #       sudo npm install -g serve
 
-
-      - name: SSH EC2 and build app 
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/VSV
-            sudo npm run build
-
-      - name: SSH EC2 and start app  
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.EC2_HOST_INSTANCE }}
-          username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/VSV
-            pm2 delete all
-            pm2 start npm -- run prod
-            pm2 save
-            pm2 list
+      # - name: SSH EC2 and start app  
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ vars.EC2_HOST_INSTANCE }}
+      #     username: ${{ vars.EC2_USERNAME_INSTANCE }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     port: 22
+      #     script: |
+      #       pm2 delete all
+      #       pm2 start serve -- -s build
+      #       pm2 save
+      #       pm2 list
                     
           
         
