@@ -23,7 +23,7 @@ function Presentation() {
           </Grid>
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
-              <MediumTopMarginLayout><UnderlineMediumTitle textAlign='center' text={APP18n.translate(APP18n.getKeys().presentation_brief_history)} textColor={Colors.primary_black} /></MediumTopMarginLayout>
+              <MediumTopMarginLayout><UnderlineMediumTitle textTransform='capitalize' textAlign='center' text={APP18n.translate(APP18n.getKeys().presentation_brief_history)} textColor={Colors.primary_black} /></MediumTopMarginLayout>
               <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p1)} /></MediumTopMarginLayout>
               <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p2)} /></MediumTopMarginLayout>
               <MediumTopMarginLayout><LargeParagraph text={APP18n.translate(APP18n.getKeys().presentation_brief_history_p3)} /></MediumTopMarginLayout>

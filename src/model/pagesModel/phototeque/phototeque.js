@@ -18,7 +18,7 @@ class PhototequeList {
 
             const { attributes } = value
 
-            const { titre, photo } = attributes
+            const { titre, photo,publishedAt } = attributes
             const { data = [] } = photo
 
             let imagesList = []
@@ -31,11 +31,16 @@ class PhototequeList {
 
             });
 
+            let myDate = new Date(publishedAt);
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+            let frenchDate = myDate.toLocaleDateString('fr-FR', options);
+
 
 
             return {
                 title: titre,
-                photoList: imagesList
+                photoList: imagesList,
+                publishedDate:frenchDate
             }
         })
 
@@ -66,7 +71,7 @@ export class Phototeque extends APIQuery {
             const { pageCount } = pagination
             return {
                 carousel: photoList.reverse(),
-                pageSize: pageCount
+                pageSize: pageCount,
             }
 
 

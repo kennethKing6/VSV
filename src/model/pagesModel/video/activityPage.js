@@ -26,6 +26,7 @@ export class VideoPage extends APIQuery {
                     description: activity.getDescription(),
                     title: activity.getTitle(),
                     caption: activity.getCaption(),
+                    publishedDate: activity.getPublishedDate()
                 })
             }
 

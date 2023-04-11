@@ -37,4 +37,10 @@ export class Photo {
     getID() {
         return this.photoID
     }
+    getPublishedDate(){
+        let myDate = new Date(this.datePublisheddAt);
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+        let frenchDate = myDate.toLocaleDateString('fr-FR', options);
+        return frenchDate
+    }
 }

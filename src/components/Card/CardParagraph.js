@@ -10,12 +10,12 @@ export default function CardParagraph({ title, paragraph,
             <CardContent>
 
                 <Typography variant="h5" component="div" color={textColor}
-                    fontFamily={APPFONT.getFontKeys().fontNameSlabo}>
+                    fontFamily={APPFONT.getFontKeys().fontNameLato} textTransform={'capitalize'}>
                     {title}
                 </Typography>
 
                 <Typography variant="body2" color={textColor}
-                    fontFamily={APPFONT.getFontKeys().fontNameSlabo}>
+                    fontFamily={APPFONT.getFontKeys().fontNameMontserrat}>
                     {paragraph}
                 </Typography>
             </CardContent>

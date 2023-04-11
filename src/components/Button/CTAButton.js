@@ -17,6 +17,6 @@ const styles = {
         backgroundColor: Colors.primary_yellow,
         padding:SPACING.xLg,
         color:Colors.primary_black,
-        fontFamily:APPFONT.getFontKeys().fontNameSlabo
+        fontFamily:APPFONT.getFontKeys().fontNameLato
     }
 }

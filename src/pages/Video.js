@@ -39,9 +39,9 @@ export default function Video() {
             <MediumPaddingTopBottom>
                 <CenterLayout>
                     {videos.map((video) => {
-                        const { caption, url, title, description } = video
+                        const { caption, url, title, description,publishedDate } = video
                         return (<Grid item sm={6} md={4} xs={12}><CardVideo caption={caption}
-                            src={url} title={title} description={description} /></Grid>)
+                            src={url} title={title} description={description} publishedDate={publishedDate}/></Grid>)
                     })}
                 </CenterLayout>
             </MediumPaddingTopBottom>

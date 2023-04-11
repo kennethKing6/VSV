@@ -3,7 +3,7 @@ import { fontNames } from './fontNames'
 
 WebFont.load({
     google: {
-        families: ['Slabo', 'Droid Serif']
+        families: ['Lato','Montserrat', 'sans-serif']
     }
 });
 

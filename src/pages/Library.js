@@ -37,8 +37,8 @@ export default function Library() {
         <MediumTopMarginLayout>
 
           {carouselList.map((carouselItem) => {
-            const { title, photoList } = carouselItem
-            return <GaleryHeader title={title} imgList={photoList} />
+            const { title, photoList,publishedDate } = carouselItem
+            return <GaleryHeader title={title} imgList={photoList} publishedDate={publishedDate}/>
           })}
         </MediumTopMarginLayout>
 

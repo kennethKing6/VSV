@@ -23,7 +23,7 @@ export default function ActivityDetails(props) {
                     <LargeTitle text={title} textColor={Colors.primary_black} />
                     {caption ? <SmallTitle text={caption} textColor={Colors.primary_purple} /> : <></>}
                     {imageUrl ? <CommonAvatar url={imageUrl} sx={{
-                         objectFit: 'cover',
+                         objectFit: 'contain',
                         width:{
                             xs:'100%',
                             md:'70%'
@@ -32,8 +32,9 @@ export default function ActivityDetails(props) {
                             xs:'100%'
                         }
                     }} /> : <></>}
-                    {publishedDate ? <SmallTitle text={publishedDate} textColor={Colors.primary_dark_grey} /> : <></>}
-                    <Grid item mt={8}>
+                    <Grid mt={2}></Grid>
+                    {publishedDate ? <SmallTitle text={publishedDate} textColor={Colors.primary_dark_grey} textTransform='capitalize'/> : <></>}
+                    <Grid item mt={2}>
                         {descriptions.map((description, index) => {
                             return (
                                 <Grid item mt={1}> <LargeParagraph text={description} key={index} /></Grid>

@@ -3,10 +3,13 @@ import React from 'react'
 import { APPFONT } from '../../fonts/font'
 import { Colors } from '../../theme/colors'
 
-export default function MediumTitle({ text, textColor = Colors.primary_white }) {
+export default function MediumTitle({ text, 
+    textColor = Colors.primary_white,
+    fontFamily =  APPFONT.getFontKeys().fontNameLato,
+    textTransform = "none"}) {
     return (
         <Typography variant="h3" gutterBottom color={textColor}
-            fontFamily={APPFONT.getFontKeys().fontNameSlabo}>
+            fontFamily={fontFamily} textTransform={textTransform}>
             {text}
         </Typography>)
 }

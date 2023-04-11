@@ -24,7 +24,8 @@ export class AudioPage extends APIQuery {
                     description: audio.getDescription(),
                     title: audio.getTitle(),
                     caption: audio.getCaption(),
-                    audioURL: audio.getAudioURL()
+                    audioURL: audio.getAudioURL(),
+                    publishedDate: audio.getPublishedDate()
                 })
             }
 

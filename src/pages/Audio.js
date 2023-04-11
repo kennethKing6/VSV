@@ -39,11 +39,11 @@ export default function Audio() {
                 <CenterLayout>
                     {audios.map((data) => {
 
-                        const { caption, description, image, audioURL, imageURL, title } = data
+                        const { caption, description, image, audioURL, imageURL, title,publishedDate } = data
 
                         return (
                             <Grid item sm={6} md={4} xs={12}>
-                                <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} />
+                                <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} publishedDate={publishedDate}/>
                             </Grid>
                         )
                     })}

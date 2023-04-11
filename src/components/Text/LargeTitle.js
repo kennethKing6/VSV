@@ -3,10 +3,12 @@ import React from 'react'
 import { APPFONT } from '../../fonts/font'
 import { Colors } from '../../theme/colors'
 
-export default function LargeTitle({text,textColor = Colors.primary_white}) {
+export default function LargeTitle({text,
+    textColor = Colors.primary_white,
+    textTransform = "none"}) {
     return (
-        <Typography variant="h2" fontWeight={800}  gutterBottom color={textColor} 
-            fontFamily={APPFONT.getFontKeys().fontNameSlabo}>
+        <Typography variant="h2" textTransform={textTransform} fontWeight={800}  gutterBottom color={textColor} 
+            fontFamily={APPFONT.getFontKeys().fontNameLato}>
             {text}
         </Typography>)
 }

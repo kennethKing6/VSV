@@ -67,13 +67,13 @@ const styles = (selection,type)=>{
     
     if(selection === type) return  {
         color: Colors.primary_white,
-        fontFamily: APPFONT.getFontKeys().fontNameSlabo,
+        fontFamily: APPFONT.getFontKeys().fontNameMontserrat,
         opacity: 1
     }
     else return {
         opacity: 0.6,
         color: Colors.primary_white,
-        fontFamily: APPFONT.getFontKeys().fontNameSlabo,
+        fontFamily: APPFONT.getFontKeys().fontNameMontserrat,
     }
     
 }

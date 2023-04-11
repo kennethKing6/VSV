@@ -48,7 +48,7 @@ export default function Contact() {
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <CenterLayout width='80%'>
-                    <LargeTitle text={APP18n.translate(APP18n.getKeys().form_title)} textColor={Colors.primary_black} />
+                    <LargeTitle text={APP18n.translate(APP18n.getKeys().form_title)} textColor={Colors.primary_black} textTransform='capitalize'/>
                     <SmallTitle text={APP18n.translate(APP18n.getKeys().form_message)} textColor={Colors.primary_black} />
                     <CommonContactForm
                         onSubmitButton={() => { setIsValidating(Math.random() * Math.random()) }}

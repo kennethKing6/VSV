@@ -2,5 +2,8 @@
 
 export const fontNames = {
     fontNameSlabo: 'Slabo',
-    fontNameDroidSerif: 'Droid Serif'
+    fontNameDroidSerif: 'Droid Serif',
+    fontNameLato:'Lato',
+    fontNameMontserrat:'Montserrat'
+
 }

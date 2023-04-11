@@ -1,6 +1,9 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { APPFONT } from '../../fonts/font'
+import { ASSETS } from '../../assets/assets'
+import CommonIconAvatar from '../Avatar/CommonIconAvatar'
 
 export default function CardActivity({
     imageHeight = "250",
@@ -23,14 +26,19 @@ export default function CardActivity({
             /> : <></>}
             <CardContent>
 
-                <Typography gutterBottom variant="h5" noWrap component="div" style={{ fontSize: '100%', fontWeight: '900' }}>{title}</Typography>
-                {caption ? <Typography variant="body2" color="text.secondary">{caption}</Typography> :
-                    description ? <Typography variant="body2" color="text.secondary">{description.split(".")[0]}</Typography> : <></>}
+                <Typography gutterBottom variant="h5" noWrap component="div" fontFamily={APPFONT.getFontKeys().fontNameLato} style={{ fontSize: '100%', fontWeight: '900' }}>{title}</Typography>
+                {caption ? <Typography variant="body2" color="text.secondary" fontFamily={APPFONT.getFontKeys().fontNameMontserrat}>{caption}</Typography> :
+                    description ? <Typography variant="body2" color="text.secondary" fontFamily={APPFONT.getFontKeys().fontNameMontserrat}>{description.split(".")[0]}</Typography> : <></>}
+
+                <Grid container xs={12} mt={2} flexDirection={'row'}>
+                    <Grid xs={1} mt={0.5} item><CommonIconAvatar require={ASSETS.CALENDAR_IC} sx={{ width: 15, height: 15, }} /></Grid>
+                    <Grid xs={11} item><Typography textTransform={'capitalize'} variant="body2" color="text.secondary" fontFamily={APPFONT.getFontKeys().fontNameMontserrat}>{publishedDate}</Typography> </Grid>
+                </Grid>
 
             </CardContent>
             <CardActions>
-                {description ? <Button size="small" onClick={() => navigation("/activityDetails", {
-                    state:{
+                {description ? <Button fontFamily={APPFONT.getFontKeys().fontNameMontserrat} size="small" onClick={() => navigation("/activityDetails", {
+                    state: {
                         title: title,
                         description: description,
                         imageUrl: imageUrl,
