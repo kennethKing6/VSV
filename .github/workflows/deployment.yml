@@ -80,10 +80,11 @@ jobs:
       - name: Show folders
         run: |
           ls 
-          ls -l ./ec2-strapi-key-pair.pem
-          ls -l ./build
-          chmod 700 ./ec2-strapi-key-pair.pem
-          chmod 700 ./build
+          sudo chmod 400 ec2-strapi-key-pair.pem
+          sudo chmod 700 ./ec2-strapi-key-pair.pem
+          sudo chmod 700 ./build
+          sudo chmod +x ./build
+
 
 
       
