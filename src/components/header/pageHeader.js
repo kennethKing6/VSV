@@ -22,7 +22,7 @@ export default function PageHeader() {
             <NoSpacingLayout xs={12} >
                 <MediumTopMarginLayout>
                     <MediumPaddingTopBottom>
-                    <Grid xs={12} md={8} height={400} style={{ backgroundImage: `url(https://res.cloudinary.com/deh2quz8u/image/upload/v1681210836/people-no-bg_kg0hhc.png)`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: 'cover', }} ></Grid>
+                    <Grid xs={12} md={8} height={400} style={{ backgroundImage: `url(${ASSETS.people_no_bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: 'cover', }} ></Grid>
 
                         <Grid xs={12} md={4} >
                             <LargeTitle text={APP18n.translate(APP18n.getKeys().header_slogan)} textTransform="capitalize"/>

@@ -21,7 +21,7 @@ function Presentation() {
       <NoSpacingLayout>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <Avatar variant='square' src={'https://res.cloudinary.com/deh2quz8u/image/upload/v1681210754/historique-img_osebx5.jpg'} sx={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+            <Avatar variant='square' src={ASSETS.historique_img} sx={{ height: '100%', width: '100%', objectFit: 'cover' }} />
           </Grid>
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>
