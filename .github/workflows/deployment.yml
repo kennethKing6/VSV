@@ -82,7 +82,7 @@ jobs:
           ls 
           ls -l ./ec2-strapi-key-pair.pem
           ls -l ./build
-          chmod 700 ~/ec2-strapi-key-pair.pem
+          chmod 700 ./ec2-strapi-key-pair.pem
           chmod 700 ./build
 
 
