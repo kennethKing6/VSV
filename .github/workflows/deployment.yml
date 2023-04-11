@@ -84,7 +84,7 @@ jobs:
       - name: Copy build folder to EC2
         run: |
           echo "Username: $(whoami)"
-          sudo chown -R  runner ./build
+          sudo chown -R  ${{ vars.EC2_HOST_INSTANCE } ./build
           sudo scp -r -i ./ec2-strapi-key-pair.pem ./build ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
        
       - name: SSH EC2 and install pm2 and serve latest
