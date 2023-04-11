@@ -10,16 +10,18 @@ import UnderlineMediumTitle from '../components/Text/UnderlineMediumTitle';
 import { APP18n } from '../i18n/i18n';
 import { Colors } from '../theme/colors';
 import LargeParagraph from '../components/Text/LargeParagraph';
+import CommonSEO from '../components/SEO/CommonSEO';
 
 function Presentation() {
-  
+
   return (
     <>
+      <CommonSEO />
       <PageHeader />
       <NoSpacingLayout>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <Avatar variant='square' src={ASSETS.historique_img} sx={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+            <Avatar variant='square' src={'https://res.cloudinary.com/deh2quz8u/image/upload/v1681210754/historique-img_osebx5.jpg'} sx={{ height: '100%', width: '100%', objectFit: 'cover' }} />
           </Grid>
           <Grid item xs={12} md={6}>
             <SmallSpacingLayout>

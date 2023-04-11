@@ -7,6 +7,7 @@ import GaleryHeader from '../components/Galery/GaleryHeader'
 import CenterLayout from '../components/layout/centerLayout'
 import VVSFooter from '../components/Footer/VVSFooter'
 import CenterLayoutPagination from '../components/Pagination/CenterPagination'
+import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function Library() {
 
@@ -32,13 +33,14 @@ export default function Library() {
 
   return (
     <>
+      <CommonSEO />
       <CommonPageHeader />
       <CenterLayout>
         <MediumTopMarginLayout>
 
           {carouselList.map((carouselItem) => {
-            const { title, photoList,publishedDate } = carouselItem
-            return <GaleryHeader title={title} imgList={photoList} publishedDate={publishedDate}/>
+            const { title, photoList, publishedDate } = carouselItem
+            return <GaleryHeader title={title} imgList={photoList} publishedDate={publishedDate} />
           })}
         </MediumTopMarginLayout>
 

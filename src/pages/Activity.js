@@ -8,6 +8,7 @@ import VVSFooter from '../components/Footer/VVSFooter'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
 import CenterLayoutPagination from '../components/Pagination/CenterPagination'
+import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function Activity() {
 
@@ -30,6 +31,7 @@ export default function Activity() {
 
     return (
         <>
+            <CommonSEO />
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <CenterLayout>

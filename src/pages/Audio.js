@@ -9,6 +9,7 @@ import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 import VVSFooter from '../components/Footer/VVSFooter'
 import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
 import CenterLayoutPagination from '../components/Pagination/CenterPagination'
+import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function Audio() {
 
@@ -34,16 +35,17 @@ export default function Audio() {
 
     return (
         <>
+            <CommonSEO />
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <CenterLayout>
                     {audios.map((data) => {
 
-                        const { caption, description, image, audioURL, imageURL, title,publishedDate } = data
+                        const { caption, description, image, audioURL, imageURL, title, publishedDate } = data
 
                         return (
                             <Grid item sm={6} md={4} xs={12}>
-                                <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} publishedDate={publishedDate}/>
+                                <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} publishedDate={publishedDate} />
                             </Grid>
                         )
                     })}

@@ -10,6 +10,7 @@ import { SPACING } from '../theme/spacing'
 import { useLocation } from 'react-router-dom'
 import VVSFooter from '../components/Footer/VVSFooter'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
+import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function PagesLibrary() {
 
@@ -35,7 +36,7 @@ export default function PagesLibrary() {
         first.push({
           height: 350,
           url: url,
-          id:  imagesList[i]
+          id: imagesList[i]
         })
       }
 
@@ -71,6 +72,7 @@ export default function PagesLibrary() {
 
   return (
     <>
+      <CommonSEO />
       <CommonPageHeader />
       <MediumPaddingTopBottom>
         <CenterThreeColumnAvatar firstList={firstList} secondList={secondList} thirdList={thirdList} />

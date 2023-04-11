@@ -10,9 +10,10 @@ import { ContactPage } from '../model/pagesModel/contact/contactPage';
 import CommonContactForm from '../components/Form/CommonContactForm';
 import VVSFooter from '../components/Footer/VVSFooter';
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom';
+import CommonSEO from '../components/SEO/CommonSEO';
 export default function Contact() {
 
-    
+
 
     const contactPage = useRef(new ContactPage())
 
@@ -45,10 +46,11 @@ export default function Contact() {
 
     return (
         <>
+            <CommonSEO />
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <CenterLayout width='80%'>
-                    <LargeTitle text={APP18n.translate(APP18n.getKeys().form_title)} textColor={Colors.primary_black} textTransform='capitalize'/>
+                    <LargeTitle text={APP18n.translate(APP18n.getKeys().form_title)} textColor={Colors.primary_black} textTransform='capitalize' />
                     <SmallTitle text={APP18n.translate(APP18n.getKeys().form_message)} textColor={Colors.primary_black} />
                     <CommonContactForm
                         onSubmitButton={() => { setIsValidating(Math.random() * Math.random()) }}
@@ -65,18 +67,18 @@ export default function Contact() {
                         onLongMessage={(value) => contactPage.current.setMessage(value)}
 
                         onSubmit={() => {
-                                contactPage.current.sendEmail((result) => {
-                                    if (result) {
-                                        alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
-                                    }
-                                })
-                            
+                            contactPage.current.sendEmail((result) => {
+                                if (result) {
+                                    alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
+                                }
+                            })
+
                         }}
                     />
 
                 </CenterLayout>
             </MediumPaddingTopBottom>
-            <VVSFooter/>
+            <VVSFooter />
         </>
     )
 }
