@@ -24,7 +24,7 @@ export default function CardAudio({
 
 
     return (
-        <Card sx={{ display: 'flex', flexDirection: 'row', }}>
+        <Card sx={{ display: 'flex', flexDirection: 'row',marginTop:'5%' }} >
             <Box sx={{ display: 'flex', flexDirection: 'column', flex: 2 }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography component="div" variant="h5" fontFamily={APPFONT.getFontKeys().fontNameLato}>

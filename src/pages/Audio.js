@@ -42,7 +42,7 @@ export default function Audio() {
                         const { caption, description, audioURL, imageURL, title, publishedDate } = data
 
                         return (
-                            <Grid item sm={6} md={4} xs={12}>
+                            <Grid item md={6} lg={4} xs={12} >
                                 <CardAudio caption={caption} description={description} img={imageURL} src={audioURL} title={title} publishedDate={publishedDate} />
                             </Grid>
                         )
