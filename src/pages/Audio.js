@@ -3,11 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import CardAudio from '../components/Card/CardAudio'
 import CommonPageHeader from '../components/header/commonPageHeader'
 import CenterLayout from '../components/layout/centerLayout'
-import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
 import { AudioPage } from '../model/pagesModel/audio/audioPage'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
 import VVSFooter from '../components/Footer/VVSFooter'
-import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
 import CenterLayoutPagination from '../components/Pagination/CenterPagination'
 import CommonSEO from '../components/SEO/CommonSEO'
 
@@ -41,7 +39,7 @@ export default function Audio() {
                 <CenterLayout>
                     {audios.map((data) => {
 
-                        const { caption, description, image, audioURL, imageURL, title, publishedDate } = data
+                        const { caption, description, audioURL, imageURL, title, publishedDate } = data
 
                         return (
                             <Grid item sm={6} md={4} xs={12}>

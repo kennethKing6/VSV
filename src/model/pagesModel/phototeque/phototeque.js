@@ -1,8 +1,6 @@
 import { BASE_URL } from "../../api/Baseurl";
-import { APIBaseService } from "../../api/apiBaseService";
 import { APIQuery } from "../../api/apiQuery";
 
-import { Photo } from "./photo";
 
 class PhototequeList {
 

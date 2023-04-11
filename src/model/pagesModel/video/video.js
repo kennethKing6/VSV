@@ -12,7 +12,6 @@ export class Video {
             updatedAt,
             publishedAt,
             locale,
-            image,
             description,
             title,
             caption,

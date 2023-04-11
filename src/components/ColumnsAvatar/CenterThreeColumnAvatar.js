@@ -13,7 +13,7 @@ export default function CenterThreeColumnAvatar({
         <CenterLayout>
             <Grid item xs={12} sm={4} >
                 {firstList.map((v) => {
-                    const { height, url, id } = v
+                    const {  url, id } = v
                     console.log('url', url)
                     return (<CommonAvatar sx={styles.item} key={id} url={url} />)
                 })}

@@ -8,7 +8,6 @@ WebFont.load({
 });
 
 class Fonts {
-    constructor() { }
 
     
     getFontKeys() {

@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import { Grid } from '@mui/material';
-import Map, { Marker, FullscreenControl, NavigationControl, MapProvider } from 'react-map-gl';
+import Map, { Marker, FullscreenControl, NavigationControl, } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { OFFICE_ADDRESS } from '../../model/utils/OfficeAddress';
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import CommonPageHeader from '../components/header/commonPageHeader'
 import CenterLayout from '../components/layout/centerLayout';
-import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout';
 import { APP18n } from '../i18n/i18n';
 import LargeTitle from '../components/Text/LargeTitle';
 import { Colors } from '../theme/colors';

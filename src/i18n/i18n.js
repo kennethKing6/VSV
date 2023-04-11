@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
+import {  initReactI18next } from "react-i18next";
 import { FooterFr } from "./footer";
 import { formFr } from "./form";
 import { headerFr, headerEn } from "./header";
@@ -45,7 +45,6 @@ i18n
     });
 
 class App18n {
-    constructor() { }
 
     translate(key = "") {
         let translated = i18n.t(key)

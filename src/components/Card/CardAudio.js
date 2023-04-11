@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography } from '@mui/material'
+import { Avatar, Box, Card, CardContent, CardMedia, Grid, IconButton, Typography } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/PauseCircle';

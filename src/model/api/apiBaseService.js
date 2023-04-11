@@ -1,6 +1,5 @@
 export class APIBaseService {
 
-    constructor(){}
 
     async _get(url) {
         try {

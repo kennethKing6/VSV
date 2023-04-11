@@ -1,4 +1,4 @@
-import { Avatar, Card, Grid, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Avatar, Grid,  } from '@mui/material';
 import { ASSETS } from '../assets/assets';
 import CardParagraph from '../components/Card/CardParagraph';
 import VVSFooter from '../components/Footer/VVSFooter';

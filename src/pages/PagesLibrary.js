@@ -1,12 +1,6 @@
-import { Grid } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
-import CommonAvatar from '../components/Avatar/CommonAvatar'
+import React, { useEffect, useState } from 'react'
 import CenterThreeColumnAvatar from '../components/ColumnsAvatar/CenterThreeColumnAvatar'
 import CommonPageHeader from '../components/header/commonPageHeader'
-import CenterLayout from '../components/layout/centerLayout'
-import MediumTopMarginLayout from '../components/layout/mediumTopMarginLayout'
-import { Phototeque, } from '../model/pagesModel/phototeque/phototeque'
-import { SPACING } from '../theme/spacing'
 import { useLocation } from 'react-router-dom'
 import VVSFooter from '../components/Footer/VVSFooter'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
@@ -14,7 +8,7 @@ import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function PagesLibrary() {
 
-  const { imagesList, title } = useLocation().state
+  const { imagesList } = useLocation().state
 
   const [firstList, setFirstList] = useState([])
   const [secondList, setSecondList] = useState([])

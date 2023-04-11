@@ -6,7 +6,6 @@ import CenterLayout from '../components/layout/centerLayout'
 import { ActivityPage } from '../model/pagesModel/activity/activityPage'
 import VVSFooter from '../components/Footer/VVSFooter'
 import MediumPaddingTopBottom from '../components/layout/mediumPaddingTopBottom'
-import CommonOutlinePagination from '../components/Pagination/CommonOutlinePagination'
 import CenterLayoutPagination from '../components/Pagination/CenterPagination'
 import CommonSEO from '../components/SEO/CommonSEO'
 
@@ -36,7 +35,7 @@ export default function Activity() {
             <MediumPaddingTopBottom>
                 <CenterLayout>
                     {activities.length > 0 ? activities.map((activity, index) => {
-                        const { id, url, caption, description, title, publicationDate } = activity
+                        const {  url, caption, description, title, publicationDate } = activity
                         return (
                             <Grid item key={JSON.stringify(activity)} sm={6} md={4} xs={12} mt={2}>
                                 <CardActivity caption={caption}
