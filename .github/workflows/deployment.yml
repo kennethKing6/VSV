@@ -61,6 +61,7 @@ jobs:
 
       - name: Archive build folder
         run: |
+          ssh-keygen -R ${{ vars.EC2_HOST_INSTANCE }}
           ssh-keyscan -H ${{ vars.EC2_HOST_INSTANCE }} >> ~/.ssh/known_hosts
           zip -r build.zip build/
 
@@ -77,23 +78,11 @@ jobs:
       - name: Extract build folder
         run: sudo unzip -o build.zip 
       
-      - name: Show folders
-        run: |
-          ls 
-          sudo chmod 400 ec2-strapi-key-pair.pem
-          sudo chmod 700 ./ec2-strapi-key-pair.pem
-          sudo chmod 700 ./build
-          sudo chmod +x ./build
-
-
-
-      
+  
       - name: Copy build folder to EC2
         run: |
-          sudo scp -r -i ./ec2-strapi-key-pair.pem ./build/ ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
-
-
-            
+          scp -r -i ./ec2-strapi-key-pair.pem ./build ${{ vars.EC2_USERNAME_INSTANCE }}@${{ vars.EC2_HOST_INSTANCE }}:/
+       
       - name: SSH EC2 and install pm2 and serve latest
         uses: appleboy/ssh-action@master
         with:
