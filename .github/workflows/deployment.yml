@@ -50,15 +50,6 @@ jobs:
             ${{ secrets.USERNAME_GITHUB }}
             {{ secrets.SSH_GITHUB }}
       
-      - name: Clone VVS project on github
-        run: |
-          sudo rm -rf ~/VSV
-          sudo apt-get update
-          sudo apt-get install git
-          sudo git clone https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-          cd ~/VSV
-          sudo git pull https://${{ secrets.SSH_GITHUB }}@github.com/${{ secrets.USERNAME_GITHUB }}/VSV.git 
-          ls -all
 
       - name: Install nodejs on github
         run: |
@@ -72,18 +63,6 @@ jobs:
         run: |
           sudo rm -rf node_modules
           sudo npm install
-
-      - name: create .env on github
-        run: |
-            sudo touch ~/VSV/.env
-            sudo chown ubuntu:ubuntu ~/VSV/.env
-            sudo echo "REACT_APP_AWS_ACCESS_KEY_ID_ENV=${{ env.REACT_APP_AWS_ACCESS_KEY_ID_ENV }}" >> .env
-            sudo echo "REACT_APP_AWS_SECRET_ACCESS_KEY_ENV=${{ env.REACT_APP_AWS_SECRET_ACCESS_KEY_ENV }}" >> .env
-            sudo echo "REACT_APP_AWS_REGION_ENV=${{ env.REACT_APP_AWS_REGION_ENV }}" >> .env
-            sudo echo "REACT_APP_EMAIL_SENDER_ENV=${{ env.REACT_APP_EMAIL_SENDER_ENV }}" >> .env
-            sudo echo "REACT_APP_EMAIL_RECIPIENT_ENV=${{ env.REACT_APP_EMAIL_RECIPIENT_ENV }}" >> .env
-            sudo echo "REACT_APP_MAPBOX_TOKEN=${{ env.REACT_APP_MAPBOX_TOKEN }}" >> .env
-            ls -al
 
       - name: Build app on github
         run: sudo npm run build
