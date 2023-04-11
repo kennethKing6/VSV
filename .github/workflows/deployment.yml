@@ -75,7 +75,8 @@ jobs:
         with:
           host: ${{ vars.EC2_HOST_INSTANCE }}
           username: ${{ vars.EC2_USERNAME_INSTANCE }}
-          password: ec2-strapi-key-pair.pem
+          key_path: ec2-strapi-key-pair.pem
+          key: ${{ secrets.SSH_KEY }}
           source: ./build.zip
           target: ~/
 
