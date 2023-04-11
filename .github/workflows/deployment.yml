@@ -90,8 +90,7 @@ jobs:
           sudo npm run build
 
       - name: Archive build folder
-        run: |
-        zip -r build.zip build/
+        run: zip -r build.zip build/
 
       - name: Copy build to runner
         uses: appleboy/scp-action@master
