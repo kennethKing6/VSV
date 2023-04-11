@@ -69,8 +69,8 @@ jobs:
 
       - name: Archive build folder
         run: |
-        ssh-keyscan -H ${{ vars.EC2_HOST_INSTANCE }} >> ~/.ssh/known_hosts
-        zip -r build.zip build/
+          ssh-keyscan -H ${{ vars.EC2_HOST_INSTANCE }} >> ~/.ssh/known_hosts
+          zip -r build.zip build/
 
       - name: Copy build to runner
         uses: appleboy/scp-action@master
