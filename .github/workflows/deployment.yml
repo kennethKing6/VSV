@@ -64,6 +64,7 @@ jobs:
           ssh-keygen -R ${{ vars.EC2_HOST_INSTANCE }}
           # ssh-keyscan -t ./ec2-strapi-key-pair.pem ${{ vars.EC2_HOST_INSTANCE }} >> ~/.ssh/known_hosts
           ssh-keyscan -H ${{ vars.EC2_HOST_INSTANCE }} >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           zip -r build.zip build/
 
       - name: Copy build to runner
