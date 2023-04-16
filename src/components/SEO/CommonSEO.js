@@ -3,13 +3,15 @@ import { Helmet } from 'react-helmet';
 import { OFFICE_ADDRESS } from '../../model/utils/OfficeAddress';
 
 function CommonSEO(
-    title = "ONG Vivre Sans Violence de femmes en Côte d'Ivoire soutenant l'entrepreneuriat féminin",
-    description = "Notre ONG de femmes en Côte d'Ivoire soutient l'entrepreneuriat féminin en offrant des formations et des ressources pour aider les entrepreneures. Rejoignez notre communauté aujourd'hui!",
+    title = "ONG Vivre Sans Violence creer par des femmes pour les femmes et les personnes vulnerable en Côte d'Ivoire soutenant l'entrepreneuriat féminin",
+    description = "Notre ONG de femmes en Côte d'Ivoire soutient l'entrepreneuriat féminin en offrant des formations et des ressources pour augmenter la productivite et le revenu. Rejoignez notre communauté aujourd'hui!",
     image = "https://res.cloudinary.com/deh2quz8u/image/upload/v1681210981/logo-bg_c95urf.jpg",
     regionPrimary = "CI",
-    regionSecondary = "FR",
+    regionSecondary = "CA",
+    regionThird = "DE",
     placementPrimary = "Côte d'Ivoire",
-    placementSecondary = "France",
+    placementSecondary = "Canada",
+    placementThird = "Germany",
     keywords = "vivre sans violence, ONG, Côte d'Ivoire,femme,femme africaine, Ivory Coast, Woman,Forum Economique Feministe,Sakassou,FEF,Bouafle,Toumodi,Djebonoua,Didievi,Beoumi,Botro,Ferke,Facobly,Sipilou"
 ) {
 
@@ -26,8 +28,10 @@ function CommonSEO(
         <meta name="geo.position" content={`${OFFICE_ADDRESS.latitude};${OFFICE_ADDRESS.longitude}`} />
         <meta name="geo.region" content={regionPrimary} />
         <meta name="geo.region" content={regionSecondary} />
+        <meta name="geo.region" content={regionThird} />
         <meta name="country" content={placementPrimary} />
         <meta name="country" content={placementSecondary} />
+        <meta name="country" content={placementThird} />
         <meta name="keywords" content={keywords} />
         <link rel="canonical" href={window.location.href} />
       </Helmet>
