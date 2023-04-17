@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/ongvivresansviolence.org/static/css/main.b901537e.css",
-    "main.js": "/ongvivresansviolence.org/static/js/main.fd2c53bb.js",
-    "static/js/787.214d4cf6.chunk.js": "/ongvivresansviolence.org/static/js/787.214d4cf6.chunk.js",
-    "static/js/mapbox-gl-csp-worker.33f2cf1a.worker.js": "/ongvivresansviolence.org/static/js/mapbox-gl-csp-worker.33f2cf1a.worker.js",
-    "static/media/logo-bg.jpeg": "/ongvivresansviolence.org/static/media/logo-bg.6bf7c3e0e9e567cd5c03.jpeg",
-    "static/media/phone-receiver-silhouette.png": "/ongvivresansviolence.org/static/media/phone-receiver-silhouette.fbdfd8964241b65d328c.png",
-    "static/media/logo-no-bg.png": "/ongvivresansviolence.org/static/media/logo-no-bg.ed2b5abda68dc60c0469.png",
-    "static/media/email.png": "/ongvivresansviolence.org/static/media/email.7e42925f9b62f38333fe.png",
-    "static/media/logo.svg": "/ongvivresansviolence.org/static/media/logo.d207eafc91fe3d719c7d3315b0d8610f.svg",
-    "index.html": "/ongvivresansviolence.org/index.html",
-    "main.b901537e.css.map": "/ongvivresansviolence.org/static/css/main.b901537e.css.map",
-    "main.fd2c53bb.js.map": "/ongvivresansviolence.org/static/js/main.fd2c53bb.js.map",
-    "787.214d4cf6.chunk.js.map": "/ongvivresansviolence.org/static/js/787.214d4cf6.chunk.js.map"
+    "main.css": "/static/css/main.b901537e.css",
+    "main.js": "/static/js/main.95d27a85.js",
+    "static/js/787.214d4cf6.chunk.js": "/static/js/787.214d4cf6.chunk.js",
+    "static/js/mapbox-gl-csp-worker.09d73ccf.worker.js": "/static/js/mapbox-gl-csp-worker.09d73ccf.worker.js",
+    "static/media/logo-bg.jpeg": "/static/media/logo-bg.6bf7c3e0e9e567cd5c03.jpeg",
+    "static/media/phone-receiver-silhouette.png": "/static/media/phone-receiver-silhouette.fbdfd8964241b65d328c.png",
+    "static/media/logo-no-bg.png": "/static/media/logo-no-bg.ed2b5abda68dc60c0469.png",
+    "static/media/email.png": "/static/media/email.7e42925f9b62f38333fe.png",
+    "static/media/logo.svg": "/static/media/logo.d207eafc91fe3d719c7d3315b0d8610f.svg",
+    "index.html": "/index.html",
+    "main.b901537e.css.map": "/static/css/main.b901537e.css.map",
+    "main.95d27a85.js.map": "/static/js/main.95d27a85.js.map",
+    "787.214d4cf6.chunk.js.map": "/static/js/787.214d4cf6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b901537e.css",
-    "static/js/main.fd2c53bb.js"
+    "static/js/main.95d27a85.js"
   ]
 }
