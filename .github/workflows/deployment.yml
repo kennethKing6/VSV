@@ -6,13 +6,15 @@ on:
     - main
 jobs:
   deploy:
+    needs: build
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ vars.PAGE_URL }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
-      - name: Deploy app to github pages
-        run: |
-          npm install react-scripts
-          npm install
-          npm install gh-pages --save-dev
-          npm run deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
