@@ -1,6 +1,6 @@
 export const formFr = {
     form_title: "Salut ici l'ONG Vivre Sans Violence 👋",
-    form_message: "Remplir pour rentrez en contact",
+    form_message: "Remplir pour rentrer en contact",
     form_input_name: 'Nom',
     form_input_name_placeholder:"Entrez votre nom",
     form_input_name_error:"Veuillez entree votre nom",
