@@ -14,4 +14,5 @@ jobs:
         run: |
           npm install react-scripts
           npm install
+          npm install gh-pages --save-dev
           npm run deploy
