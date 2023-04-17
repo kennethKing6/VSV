@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/VSV/static/css/main.b901537e.css",
+    "main.js": "/VSV/static/js/main.208f6f2d.js",
+    "static/js/787.214d4cf6.chunk.js": "/VSV/static/js/787.214d4cf6.chunk.js",
+    "static/js/mapbox-gl-csp-worker.5523012b.worker.js": "/VSV/static/js/mapbox-gl-csp-worker.5523012b.worker.js",
+    "static/media/logo-bg.jpeg": "/VSV/static/media/logo-bg.6bf7c3e0e9e567cd5c03.jpeg",
+    "static/media/phone-receiver-silhouette.png": "/VSV/static/media/phone-receiver-silhouette.fbdfd8964241b65d328c.png",
+    "static/media/logo-no-bg.png": "/VSV/static/media/logo-no-bg.ed2b5abda68dc60c0469.png",
+    "static/media/email.png": "/VSV/static/media/email.7e42925f9b62f38333fe.png",
+    "static/media/logo.svg": "/VSV/static/media/logo.d207eafc91fe3d719c7d3315b0d8610f.svg",
+    "index.html": "/VSV/index.html",
+    "main.b901537e.css.map": "/VSV/static/css/main.b901537e.css.map",
+    "main.208f6f2d.js.map": "/VSV/static/js/main.208f6f2d.js.map",
+    "787.214d4cf6.chunk.js.map": "/VSV/static/js/787.214d4cf6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b901537e.css",
+    "static/js/main.208f6f2d.js"
+  ]
+}
