@@ -37,7 +37,7 @@ export class Video {
     }
 
     getUrl() {
-        return BASE_URL + `${this.photoUrl}`
+        return  `${this.photoUrl}`
     }
 
 

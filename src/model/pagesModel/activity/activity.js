@@ -9,7 +9,7 @@ class ActivityImage {
             const { data } = image
             const { attributes } = data;
             const { url } = attributes
-            this.image = BASE_URL + url
+            this.image =  url
         } catch (err) {
             this.image = null
         }

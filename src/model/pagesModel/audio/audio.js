@@ -43,14 +43,14 @@ export class Audio {
     }
 
     getUrl() {
-        return BASE_URL + `${this.photoUrl}`
+        return `${this.photoUrl}`
     }
 
     getAudioURL() {
-        return BASE_URL + `${this.audioURL}` 
+        return  `${this.audioURL}` 
     }
     getImageURL() {
-        return  BASE_URL + `${this.imageURL}` 
+        return  `${this.imageURL}` 
     }
 
 

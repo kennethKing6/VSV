@@ -51,7 +51,6 @@ export default function VVSFooter() {
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <UnderlineMediumTitle text={APP18n.translate(APP18n.getKeys().footer_siege)} />
-                    <SmallTitle text={"Bingerville - Palmeraie"} />
                     <MapboxMap />
                 </Grid>
             </Grid>
