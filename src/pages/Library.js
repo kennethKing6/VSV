@@ -27,12 +27,14 @@ export default function Library() {
 
   }, [page])
 
-
-
+ 
 
   return (
     <>
-      <CommonSEO />
+      {Array.isArray(carouselList) && carouselList.length > 0 ? <CommonSEO
+        title={carouselList[0].title}
+        image={carouselList[0].photoList[0]}
+        description={carouselList[0].publishedDate} url={`${window.location.origin}/library`} /> : <></>}
       <CommonPageHeader />
       <CenterLayout>
         <MediumTopMarginLayout>

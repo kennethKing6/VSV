@@ -30,7 +30,10 @@ export default function Activity() {
 
     return (
         <>
-            <CommonSEO />
+            {Array.isArray(activities) && activities.length > 0?<CommonSEO 
+            title={activities[0].title}
+            image={activities[0].url}
+            description={activities[0].description} url={`${window.location.origin}/activity`}/>:<></>}
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <CenterLayout>

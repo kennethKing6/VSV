@@ -9,6 +9,7 @@ import SmallTitle from '../components/Text/SmallTitle'
 import { Grid, } from '@mui/material'
 import LargeParagraph from '../components/Text/LargeParagraph'
 import CommonAvatar from '../components/Avatar/CommonAvatar'
+import CommonSEO from '../components/SEO/CommonSEO'
 
 export default function ActivityDetails(props) {
     const { caption, description, imageUrl, publishedDate, title } = useLocation().state
@@ -17,6 +18,7 @@ export default function ActivityDetails(props) {
 
     return (
         <>
+            <CommonSEO image={imageUrl} description={description} title={title} url={`${window.location.origin}/activity`}/>
             <CommonPageHeader />
             <MediumPaddingTopBottom>
                 <Grid style={{ margin: '0 auto', }} sm={8} xs={11}>
