@@ -1,21 +1,15 @@
-name: Deploy main
-on:
-  workflow_dispatch:
-  push:
-    branches:
-    - main
+name: My GitHub Action
 
-environment:
-    name: github-pages
-    url: ${{ vars.PAGE_URL }}
+on: [push]
+
 jobs:
   deploy:
-    needs: build
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ secrets.ONG_URL }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - id: build-publish
+      uses: bitovi/github-actions-react-to-ghp@v1.2.0
+      with:
+        path: build # change to your build folder
