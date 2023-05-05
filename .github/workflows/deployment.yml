@@ -1,6 +1,8 @@
-name: My GitHub Action
-
-on: [push]
+name: Vivre Sans Violence Deployment
+on:
+  push:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
@@ -9,11 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install
+      - name: Install react application
         run: npm install
-      - name: Build
+      - name: Build the reactjs application
         run: npm run build
-      - name: deploy 
+      - name: Deploy to the public 
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
