@@ -39,7 +39,6 @@ export default function Activity() {
                 <CenterLayout>
                     {activities.length > 0 ? activities.map((activity, index) => {
                         const {  url, caption, description, title, publicationDate } = activity
-                        console.log("LLLLL",activity)
                         return (
                             <Grid item key={JSON.stringify(activity)} sm={6} md={4} xs={12} mt={2}>
                                 <CardActivity caption={caption}

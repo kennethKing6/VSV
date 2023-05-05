@@ -4,20 +4,34 @@ import { ASSETS } from '../../assets/assets'
 import { APP18n } from '../../i18n/i18n'
 import { Colors } from '../../theme/colors'
 import { APPFONT } from '../../fonts/font'
-import { useLocation, useNavigate,  } from 'react-router-dom'
+import { useLocation, useNavigate, } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
 export default function PageNavigation() {
 
-    const [actualPage,setActualPage] = useState('/')
+    const [actualPage, setActualPage] = useState('/')
     const navigation = useNavigate()
     const location = useLocation();
 
     useEffect(() => {
-        setActualPage(location.pathname.replace("/",""))
-    }, [location])
+        const pathName = location.pathname
+        const search = location.search
+
+        const queryParams = new URLSearchParams(search);
+        const param1 = queryParams.get("page")
+
+        if (param1 && process.env.NODE_ENV === 'production') {
+            const page = param1.replace("/", "")
+            navigation(`/${page}`)
+            setActualPage(page)
+        } else {
+            setActualPage(pathName.replace("/", ""))
+        }
+
+
+    }, [location,navigation])
 
 
 
