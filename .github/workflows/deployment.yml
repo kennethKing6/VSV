@@ -4,9 +4,6 @@ on: [push]
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ secrets.ONG_URL }}
     runs-on: ubuntu-latest
     steps:
     - id: build-publish
