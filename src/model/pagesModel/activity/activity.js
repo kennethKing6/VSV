@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../api/Baseurl";
 
 class ActivityImage {
     constructor(image) {

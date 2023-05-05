@@ -5,12 +5,10 @@ import { Colors } from '../../theme/colors'
 import MediumPaddingLayout from '../layout/mediumPaddingLayout'
 import SmallSpacingLayout from '../layout/smallSpacingLayout'
 import MapboxMap from '../Map/MapboxMap'
-import SmallTitle from '../Text/SmallTitle'
 import UnderlineMediumTitle from '../Text/UnderlineMediumTitle'
 import CommonIconAvatar from '../Avatar/CommonIconAvatar'
 import { ASSETS } from '../../assets/assets'
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 
 export default function VVSFooter() {
 

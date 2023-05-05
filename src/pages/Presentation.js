@@ -11,23 +11,8 @@ import { APP18n } from '../i18n/i18n';
 import { Colors } from '../theme/colors';
 import LargeParagraph from '../components/Text/LargeParagraph';
 import CommonSEO from '../components/SEO/CommonSEO';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function Presentation() {
-
-  const [searchParams, ] = useSearchParams();
-  const navigate = useNavigate()
-  const page = searchParams.get('page');
-
-  useEffect(() => {
-    findPage(page)
-  }, [])
-
-  const findPage = (page) => {
-    if (page)
-      navigate(page)
-  }
 
   return (
     <>

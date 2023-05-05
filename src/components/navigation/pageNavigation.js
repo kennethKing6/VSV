@@ -1,66 +1,61 @@
 import { Grid, Avatar, } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ASSETS } from '../../assets/assets'
 import { APP18n } from '../../i18n/i18n'
 import { Colors } from '../../theme/colors'
 import { APPFONT } from '../../fonts/font'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate,  } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-let selection = null;
 
 export default function PageNavigation() {
 
+    const [actualPage,setActualPage] = useState('/')
     const navigation = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams();
+    const location = useLocation();
 
     useEffect(() => {
-        const page = searchParams.get('page')
-        if (page)
-            selection = page
-    }, [])
+        setActualPage(location.pathname.replace("/",""))
+    }, [location])
+
+
 
     return (
         <Grid container  >
             <Navbar expand="md" style={{ width: '100%' }}>
                 <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => {
                     navigation("/")
-                    selection = null
                 }}><Avatar sx={{ bgcolor: Colors.primary_yellow, width: 100, height: 50, }} variant="square" src={ASSETS.logo_svg} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto" >
                         <Nav.Link
                             onClick={() => {
-                                selection = 'library'
                                 navigation("/library")
                             }}
-                            style={styles(selection, 'library')}>
+                            style={styles(actualPage, 'library')}>
                             {APP18n.translate(APP18n.getKeys().navigation_libraries)}
                         </Nav.Link>
                         <Nav.Link
                             onClick={() => {
-                                selection = 'video'
                                 navigation("/video")
                             }}
-                            style={styles(selection, 'video')}>
+                            style={styles(actualPage, 'video')}>
                             {APP18n.translate(APP18n.getKeys().navigation_video)}
                         </Nav.Link>
                         <Nav.Link
                             onClick={() => {
-                                selection = 'audio'
                                 navigation("/audio")
                             }}
-                            style={styles(selection, 'audio')}>
+                            style={styles(actualPage, 'audio')}>
                             {APP18n.translate(APP18n.getKeys().navigation_audio)}
                         </Nav.Link>
                         <Nav.Link
                             onClick={() => {
-                                selection = 'activity'
                                 navigation("/activity")
                             }}
-                            style={styles(selection, 'activity')}>
+                            style={styles(actualPage, 'activity')}>
                             {APP18n.translate(APP18n.getKeys().navigation_activities)}
                         </Nav.Link>
                     </Nav>
@@ -72,7 +67,6 @@ export default function PageNavigation() {
 }
 
 const styles = (selection, type) => {
-
     if (selection === type) return {
         color: Colors.primary_white,
         fontFamily: APPFONT.getFontKeys().fontNameMontserrat,

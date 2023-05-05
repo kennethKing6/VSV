@@ -57,7 +57,7 @@ export default function PagesLibrary() {
     setThirdList(third)
 
 
-  }, [])
+  }, [imagesList])
 
 
 
