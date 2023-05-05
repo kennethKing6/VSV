@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 function Presentation() {
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, ] = useSearchParams();
   const navigate = useNavigate()
   const page = searchParams.get('page');
 
