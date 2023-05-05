@@ -18,7 +18,7 @@ export default function Audio() {
     const [pageSize, setPageSize] = useState(1)
 
     useEffect(() => {
-        audio.current.getAudios(pageSize).then((auds) => {
+        audio.current.getAudios(page).then((auds) => {
 
             const { audios, pageSize } = auds
 

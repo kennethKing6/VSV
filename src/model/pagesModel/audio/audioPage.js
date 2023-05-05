@@ -4,9 +4,6 @@ import { Audio } from "./audio";
 
 export class AudioPage extends APIQuery {
 
-    constructor() {
-        super()
-    }
 
     async getAudios(page = 1) {
         try {

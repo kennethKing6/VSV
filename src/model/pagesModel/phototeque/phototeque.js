@@ -51,10 +51,6 @@ class PhototequeList {
 
 export class Phototeque extends APIQuery {
 
-    constructor() {
-        super()
-    }
-
     async getPhotos(page = 1) {
         try {
             const response = await this.paginateWithPageNum(`${BASE_URL}/api/photoques?populate=*`, page)

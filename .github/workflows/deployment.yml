@@ -6,8 +6,6 @@ permissions:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    container:
-      image: node:19-alpine3.16
     steps:
       - name: Checkout
         uses: actions/checkout@v3

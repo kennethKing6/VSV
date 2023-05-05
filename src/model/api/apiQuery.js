@@ -5,9 +5,6 @@ import { APIBaseService } from './apiBaseService'
 
 export class APIQuery extends APIBaseService {
 
-    constructor() {
-        super()
-    }
 
 
     async paginateWithPageNum(url = '', page = 1, pageSize = 25) {

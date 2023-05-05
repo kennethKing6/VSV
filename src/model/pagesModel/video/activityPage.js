@@ -4,9 +4,6 @@ import { Video } from "./video";
 
 export class VideoPage extends APIQuery {
 
-    constructor() {
-        super()
-    }
 
     async getVideos(page = 1) {
         try {

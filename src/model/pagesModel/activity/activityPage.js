@@ -4,9 +4,6 @@ import { Activity } from "./activity";
 
 export class ActivityPage extends APIQuery {
 
-    constructor() {
-        super()
-    }
 
     async getActivities(page = 1) {
         try {
