@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '../../theme/colors'
 import { APIBaseService } from '../../model/api/apiBaseService'
-import { BASE_URL } from '../../model/api/Baseurl'
+import { API_URL } from '../../model/api/Baseurl'
 
 export default function TopBanner() {
 
@@ -10,7 +10,7 @@ export default function TopBanner() {
 
     useEffect(() => {
         const apiBaseService = new APIBaseService()
-        const url = `${BASE_URL}/content`
+        const url = `${API_URL}/content`
         const queryUrl = "https://api.ongvivresansviolence.org/api/prochaine-activite"
         apiBaseService._get(url, queryUrl).then((result) => {
             const { data } = result
