@@ -1,5 +1,4 @@
 import AWS from 'aws-sdk';
-import { APP18n } from '../../i18n/i18n';
 import { API_URL } from '../api/Baseurl';
 
 

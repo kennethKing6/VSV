@@ -1,6 +1,6 @@
 import qs from 'qs'
 import { APIBaseService } from './apiBaseService'
-import { API_URL, BASE_URL } from './Baseurl'
+import { API_URL } from './Baseurl'
 
 
 
