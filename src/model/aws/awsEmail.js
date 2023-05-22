@@ -22,11 +22,14 @@ export class AWSEmail {
         return await fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                "name": name,
-                "surname": surname,
-                "message": message,
-                "emailÏ": email
-            })
+                name: name,
+                surname: surname,
+                message: message,
+                email: email
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
     }

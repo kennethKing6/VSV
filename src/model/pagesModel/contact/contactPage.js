@@ -52,9 +52,7 @@ export class ContactPage {
     }
 
     async sendEmail() {
-
-        if (this.email) {
-           
+        if (this.email && this.name && this.surname && this.message) {
             await this.awsEmail.senEmail(this.name, this.surname, this.message, this.email)
             // clear form
             this.email = null;
@@ -66,7 +64,9 @@ export class ContactPage {
                 surnameError: null,
                 emailError: null
             }
+            return true
         }
+        throw new Error("remplir Formulaire")
     }
 
     setEmail(email) {

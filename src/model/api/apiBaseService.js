@@ -7,7 +7,10 @@ export class APIBaseService {
                 method: 'POST',
                 body: JSON.stringify({
                     url: queryAPI
-                })
+                }),
+                headers:{
+                    "Content-Type":"application/json"
+                }
             })
             return await result.json()
         } catch (err) {
