@@ -1,5 +1,6 @@
 import AWS from 'aws-sdk';
 import { APP18n } from '../../i18n/i18n';
+import { API_URL } from '../api/Baseurl';
 
 
 
@@ -15,50 +16,19 @@ export class AWSEmail {
 
     }
 
-    senEmail(msgObject, callback) {
+    async senEmail(name, surname, message, email) {
 
-        const {
-            name = 'Nathalie',
-            surname = 'Kouakou',
-            message = 'Bonjour',
-            email = ''
-        } = msgObject
+        const url = API_URL + '/contact-us'
 
-        const params = {
-            Destination: {
-                ToAddresses: [process.env.REACT_APP_EMAIL_RECIPIENT_ENV]
-            },
-            Message: {
-                Body: {
-                    Html: {
-                        Data: `
-                        <p>Le message: ${message}</p>
-                         <p>L'email de Madame/Monsieur ${surname} ${name} est ${email}
-                        `,
-                        Charset: 'UTF-8'
-                    }
-                },
-                Subject: {
-                    Data: `Monsieur/Madame ${surname} ${name} vous ecris`,
-                    Charset: 'UTF-8'
-                }
-            },
-            Source: process.env.REACT_APP_EMAIL_SENDER_ENV,
-        };
+        return await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                "name": name,
+                "surname": surname,
+                "message": message,
+                "emailÏ": email
+            })
+        })
 
-        this.ses.sendEmail(params, function (err, data) {
-            if (err) {
-                console.log(err);
-                alert(APP18n.translate(APP18n.getKeys().form_email_sent_error))
-                callback(false)
-            } else {
-                callback(true)
-            }
-        });
-
-
-       
-
-       
     }
 }

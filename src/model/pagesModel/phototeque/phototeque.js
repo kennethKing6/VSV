@@ -53,7 +53,7 @@ export class Phototeque extends APIQuery {
 
     async getPhotos(page = 1) {
         try {
-            const response = await this.paginateWithPageNum(`${BASE_URL}/api/photoques?populate=*`, page)
+            const response = await this.paginateWithPageNum(`${BASE_URL}/api/photoques`, page)
             const { data = [], meta } = response
 
             //Extract data

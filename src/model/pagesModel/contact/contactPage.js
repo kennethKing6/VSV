@@ -51,30 +51,22 @@ export class ContactPage {
         return this.result
     }
 
-    sendEmail(onSuccess) {
+    async sendEmail() {
 
         if (this.email) {
-            const params = {
-                email:this.email,
-                surname:this.surname,
-                name:this.name,
-                message:this.message
+           
+            await this.awsEmail.senEmail(this.name, this.surname, this.message, this.email)
+            // clear form
+            this.email = null;
+            this.surname = null;
+            this.name = null;
+            this.message = '';
+            this.result = {
+                nameError: null,
+                surnameError: null,
+                emailError: null
             }
-            this.awsEmail.senEmail(params, (result) => {
-                onSuccess(result)
-                // clear form
-                this.email = null;
-                this.surname = null;
-                this.name = null;
-                this.message = '';
-                this.result = {
-                    nameError: null,
-                    surnameError: null,
-                    emailError: null
-                }
-            })
         }
-        onSuccess(false)
     }
 
     setEmail(email) {

@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { APIBaseService } from './apiBaseService'
+import { API_URL, BASE_URL } from './Baseurl'
 
 
 
@@ -13,13 +14,14 @@ export class APIQuery extends APIBaseService {
             pagination: {
                 page: page,
                 pageSize: pageSize,
-            }
+            },
         },
             {
                 encodeValuesOnly: true, // prettify URL
             })
         const finalURL = `${url}?${query}&populate=*`
-        const data = await this._get(finalURL)
+        const apiEndPoint = `${API_URL}/content`
+        const data = await this._get(apiEndPoint, finalURL)
 
         //set the paginator 
         return data

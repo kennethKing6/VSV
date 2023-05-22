@@ -65,12 +65,13 @@ export default function Contact() {
 
                         onLongMessage={(value) => contactPage.current.setMessage(value)}
 
-                        onSubmit={() => {
-                            contactPage.current.sendEmail((result) => {
-                                if (result) {
-                                    alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
-                                }
-                            })
+                        onSubmit={async () => {
+                           try{
+                            await contactPage.current.sendEmail()
+                            alert(APP18n.translate(APP18n.getKeys().form_email_sent_msg))
+                           }catch(err){
+                            alert(APP18n.translate(APP18n.getKeys().form_email_sent_error))
+                           }
 
                         }}
                     />
