@@ -2,16 +2,16 @@ import { Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '../../theme/colors'
 import { APIBaseService } from '../../model/api/apiBaseService'
-import { API_URL } from '../../model/api/Baseurl'
+import { API_URL, BASE_URL } from '../../model/api/Baseurl'
 
 export default function TopBanner() {
-
+ 
     const [text, setText] = useState(null)
 
     useEffect(() => {
         const apiBaseService = new APIBaseService()
         const url = `${API_URL}/content`
-        const queryUrl = "https://api.ongvivresansviolence.org/api/prochaine-activite"
+        const queryUrl = `${BASE_URL}/api/prochaine-activite`
         apiBaseService._get(url, queryUrl).then((result) => {
             const { data } = result
             if (data) {
