@@ -25,7 +25,7 @@ jobs:
       - name: Install react application
         run: npm install
       - name: Create Environment vars for deployment
-        run: echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.REACT_APP_MAPBOX_TOKEN }}" > .env.production
+        run: echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.REACT_APP_MAPBOX_TOKEN }}" > .env
         env: 
           REACT_APP_MAPBOX_TOKEN: "${{secrets.REACT_APP_MAPBOX_TOKEN}}"
       - name: Build the reactjs application
