@@ -24,9 +24,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Install react application
         run: npm install
+      - name: Create Environment vars for deployment
+        run: echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.REACT_APP_MAPBOX_TOKEN }}" > .env.production
+        env: 
+          REACT_APP_MAPBOX_TOKEN: "${{secrets.REACT_APP_MAPBOX_TOKEN}}"
       - name: Build the reactjs application
         run: npm run build
       - name: Deploy to the public 
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
+        env:
+          REACT_APP_MAPBOX_TOKEN: "${{secrets.REACT_APP_MAPBOX_TOKEN}}"
