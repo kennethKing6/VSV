@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api/Baseurl";
+import { API_URL } from "../../api/Baseurl";
 import { APIQuery } from "../../api/apiQuery";
 import { Audio } from "./audio";
 
@@ -7,7 +7,7 @@ export class AudioPage extends APIQuery {
 
     async getAudios(page = 1) {
         try {
-            const response = await this.paginateWithPageNum(`${BASE_URL}/api/audios`,page)
+            const response = await this.paginateWithPageNum(`${API_URL}/audios`,page)
             const { data = [], meta } = response
 
             //Extract data

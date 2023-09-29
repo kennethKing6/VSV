@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api/Baseurl";
+import { API_URL, } from "../../api/Baseurl";
 import { APIQuery } from "../../api/apiQuery";
 
 
@@ -24,7 +24,7 @@ class PhototequeList {
             data.forEach(element => {
                 const { attributes: itemAttributes } = element
                 const { url } = itemAttributes
-                const finalUrl = url.includes("https") ? url : BASE_URL + url
+                const finalUrl = url.includes("https") ? url : API_URL + url
                 imagesList.push(finalUrl)
 
             });
@@ -53,7 +53,7 @@ export class Phototeque extends APIQuery {
 
     async getPhotos(page = 1) {
         try {
-            const response = await this.paginateWithPageNum(`${BASE_URL}/api/photoques`, page)
+            const response = await this.paginateWithPageNum(`${API_URL}/photoques`, page)
             const { data = [], meta } = response
 
             //Extract data

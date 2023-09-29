@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api/Baseurl";
+import { API_URL } from "../../api/Baseurl";
 
 export class Photo {
 
@@ -26,7 +26,7 @@ export class Photo {
     }
 
     getUrl() {
-        return BASE_URL + `${this.photoUrl}`
+        return API_URL + `${this.photoUrl}`
     }
 
 

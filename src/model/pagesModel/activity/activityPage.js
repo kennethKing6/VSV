@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api/Baseurl";
+import { API_URL } from "../../api/Baseurl";
 import { APIQuery } from "../../api/apiQuery";
 import { Activity } from "./activity";
 
@@ -6,8 +6,9 @@ export class ActivityPage extends APIQuery {
 
 
     async getActivities(page = 1) {
+        console.log("Are we ?",`${API_URL}/activites`)
         try {
-            const response = await this.paginateWithPageNum(`${BASE_URL}/api/activites`,page)
+            const response = await this.paginateWithPageNum(`${API_URL}/activites`,page)
             const { data = [], meta } = response
 
             //Extract data
@@ -41,4 +42,5 @@ export class ActivityPage extends APIQuery {
     }
 
 }
+
 

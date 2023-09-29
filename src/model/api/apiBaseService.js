@@ -1,17 +1,8 @@
 export class APIBaseService {
 
-
-    async _get(baseURL, queryAPI) {
+    async _get(baseURL) {
         try {
-            const result = await fetch(baseURL, {
-                method: 'POST',
-                body: JSON.stringify({
-                    url: queryAPI
-                }),
-                headers:{
-                    "Content-Type":"application/json"
-                }
-            })
+            const result = await fetch(baseURL, { method: 'GET'})
             return await result.json()
         } catch (err) {
 

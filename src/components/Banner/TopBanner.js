@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '../../theme/colors'
 import { APIBaseService } from '../../model/api/apiBaseService'
-import { API_URL, BASE_URL } from '../../model/api/Baseurl'
+import { API_URL,  } from '../../model/api/Baseurl'
 
 export default function TopBanner() {
  
@@ -10,9 +10,8 @@ export default function TopBanner() {
 
     useEffect(() => {
         const apiBaseService = new APIBaseService()
-        const url = `${API_URL}/content`
-        const queryUrl = `${BASE_URL}/api/prochaine-activite`
-        apiBaseService._get(url, queryUrl).then((result) => {
+        const url = `${API_URL}/prochaine-activite`
+        apiBaseService._get(url).then((result) => {
             const { data } = result
             if (data) {
                 const { attributes: { prochaine_activites } } = data

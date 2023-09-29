@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api/Baseurl";
+import { API_URL } from "../../api/Baseurl";
 import { APIQuery } from "../../api/apiQuery";
 import { Video } from "./video";
 
@@ -7,7 +7,7 @@ export class VideoPage extends APIQuery {
 
     async getVideos(page = 1) {
         try {
-            const response = await this.paginateWithPageNum(`${BASE_URL}/api/videos?populate=*`,page)
+            const response = await this.paginateWithPageNum(`${API_URL}/videos`,page)
             const { data = [], meta } = response
 
             //Extract data
