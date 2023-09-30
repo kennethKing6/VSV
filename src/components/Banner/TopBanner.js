@@ -10,12 +10,11 @@ export default function TopBanner() {
 
     useEffect(() => {
         const apiBaseService = new APIBaseService()
-        const url = `${API_URL}/prochaine-activite`
+        const url = `${API_URL}/prochaine-activites`
         apiBaseService._get(url).then((result) => {
-            const { data } = result
-            if (data) {
-                const { attributes: { prochaine_activites } } = data
-                setText(prochaine_activites)
+            const { prochaineActivites } = result
+            if (prochaineActivites) {
+                setText(prochaineActivites)
             }
         })
 
