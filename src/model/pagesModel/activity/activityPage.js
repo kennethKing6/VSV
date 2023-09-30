@@ -6,16 +6,15 @@ export class ActivityPage extends APIQuery {
 
 
     async getActivities(page = 1) {
-        console.log("Are we ?",`${API_URL}/activites`)
         try {
             const response = await this.paginateWithPageNum(`${API_URL}/activites`,page)
-            const { data = [], meta } = response
 
             //Extract data
             const result = []
 
-            for (let i = 0; i < data.length; i++) {
-                const activity = new Activity(data[i])
+            for (let i = 0; i < response.length; i++) {
+                const activity = new Activity(response[i])
+
                 result.push({
                     url: activity.getUrl(),
                     height: activity.getHeight(),
@@ -27,14 +26,11 @@ export class ActivityPage extends APIQuery {
                 })
             }
 
-            // Extract pageSize
-            const {pagination} = meta
-            const {pageCount} = pagination
 
 
             return {
                 data: result,
-                pageSize:pageCount
+                pageSize:response.length
             }
         } catch (err) {
             throw new Error(err)

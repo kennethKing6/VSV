@@ -1,3 +1,4 @@
+import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL"
 
 class ActivityImage {
     constructor(image) {
@@ -5,10 +6,8 @@ class ActivityImage {
     }
     #setup(image) {
         try {
-            const { data } = image
-            const { attributes } = data;
-            const { url } = attributes
-            this.image =  url
+            const { url } = image
+            this.image =  formatImageUrl(url)
         } catch (err) {
             this.image = null
         }
@@ -23,19 +22,19 @@ class ActivityImage {
 export class Activity {
 
     constructor(data) {
-
-        const { id, attributes } = data;
+        
 
         const {
-            createdAt,
-            updatedAt,
-            publishedAt,
-            locale,
-            image,
-            description,
-            titre,
-            caption
-        } = attributes
+            createdAt = null,
+            updatedAt = null,
+            publishedAt = null,
+            locale = null,
+            image = null,
+            description = null,
+            titre = null,
+            caption = null,
+            _id = null
+        } = data
 
         const activityImage = new ActivityImage(image)
 
@@ -43,7 +42,7 @@ export class Activity {
         this.dateUpdateddAt = updatedAt;
         this.datePublisheddAt = publishedAt;
         this.dateLocaledAt = locale;
-        this.ID = id;
+        this.ID = _id;
         this.photoUrl = activityImage.getUrl()
         this.photoHeight = null;
         this.description = description;

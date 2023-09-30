@@ -1,44 +1,39 @@
+import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL";
 
 export class Audio {
 
     constructor(data) {
 
-        const { id, attributes } = data;
 
         const {
             createdAt,
             updatedAt,
-            publishedAt,
+            published_at,
             locale,
-            image,
+            image: {url:imageUrl},
             description,
-            title,
-            caption,
-            audio } = attributes
+            titre,
+            _id,
+            legende,
+            audio: {url:audioUrl} } = data
 
 
-        //extract audio url
-        const { data: audioActivity } = audio
-        const { attributes: audioAttributes } = audioActivity
-        const { url: audioURL } = audioAttributes
 
-        //extract image url
-        const { data: imageActivity } = image
-        const { attributes: imageAttributes } = imageActivity
-        const { url: imageUrl } = imageAttributes
-
+     
+            const formattedAudioUrl = formatImageUrl(audioUrl)
+            const formattedImageUrl = formatImageUrl(imageUrl)
 
 
         this.dateCreatedAt = createdAt;
         this.dateUpdateddAt = updatedAt;
-        this.datePublisheddAt = publishedAt;
+        this.datePublisheddAt = published_at;
         this.dateLocaledAt = locale;
-        this.ID = id;
+        this.ID = _id;
         this.description = description;
-        this.title = title;
-        this.caption = caption;
-        this.audioURL = audioURL;
-        this.imageURL = imageUrl
+        this.title = titre;
+        this.caption = legende;
+        this.audioURL = formattedAudioUrl;
+        this.imageURL = formattedImageUrl
     }
 
     getUrl() {

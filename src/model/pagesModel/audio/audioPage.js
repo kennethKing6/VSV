@@ -8,12 +8,11 @@ export class AudioPage extends APIQuery {
     async getAudios(page = 1) {
         try {
             const response = await this.paginateWithPageNum(`${API_URL}/audios`,page)
-            const { data = [], meta } = response
 
             //Extract data
             const result = []
-            for (let i = 0; i < data.length; i++) {
-                const audio = new Audio(data[i])
+            for (let i = 0; i < response.length; i++) {
+                const audio = new Audio(response[i])
                 result.push({
                     imageURL: audio.getImageURL(),
                     id: audio.getID(),
@@ -25,14 +24,11 @@ export class AudioPage extends APIQuery {
                 })
             }
 
-            // Extract pageSize
-            const { pagination } = meta
-            const { pageCount } = pagination
 
 
             return {
                 audios: result,
-                pageSize: pageCount
+                pageSize: response.length
             }
         } catch (err) {
             throw new Error(err)

@@ -8,13 +8,12 @@ export class VideoPage extends APIQuery {
     async getVideos(page = 1) {
         try {
             const response = await this.paginateWithPageNum(`${API_URL}/videos`,page)
-            const { data = [], meta } = response
 
             //Extract data
             const result = []
 
-            for (let i = 0; i < data.length; i++) {
-                const activity = new Video(data[i])
+            for (let i = 0; i < response.length; i++) {
+                const activity = new Video(response[i])
                 result.push({
                     url: activity.getUrl(),
                     height: activity.getHeight(),
@@ -26,13 +25,10 @@ export class VideoPage extends APIQuery {
                 })
             }
 
-            // Extract pageSize
-            const { pagination } = meta
-            const { pageCount } = pagination
 
             return {
                 videos: result,
-                pageSize: pageCount
+                pageSize: response.length
             }
         } catch (err) {
             throw new Error(err)

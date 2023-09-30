@@ -1,37 +1,35 @@
+import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL";
+
 export class Video {
 
     constructor(data) {
 
 
-        const { id, attributes } = data;
 
         const {
             createdAt,
             updatedAt,
-            publishedAt,
+            published_at,
             locale,
             description,
-            title,
-            caption,
-            video } = attributes
+            titre,
+            Legende,
+            _id,
+            video: {url,size} } = data
 
 
-        const { data: activityData } = video
-
-        const { attributes: activityAttributes } = activityData
-        const { height, url } = activityAttributes
-
+       
 
         this.dateCreatedAt = createdAt;
         this.dateUpdateddAt = updatedAt;
-        this.datePublisheddAt = publishedAt;
+        this.datePublisheddAt = published_at;
         this.dateLocaledAt = locale;
-        this.ID = id;
-        this.photoUrl = url
-        this.photoHeight = height;
+        this.ID = _id;
+        this.photoUrl = formatImageUrl(url)
+        this.photoHeight = size;
         this.description = description;
-        this.title = title;
-        this.caption = caption
+        this.title = titre;
+        this.caption = Legende
     }
 
     getUrl() {
