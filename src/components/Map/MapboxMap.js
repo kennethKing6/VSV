@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import Map, { Marker, FullscreenControl, NavigationControl, } from 'react-map-gl';
+import Map, { Marker, NavigationControl, } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { OFFICE_ADDRESS } from '../../model/utils/OfficeAddress';
 
@@ -23,7 +23,6 @@ function MapboxMap() {
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         >
             <Marker longitude={OFFICE_ADDRESS.longitude} latitude={OFFICE_ADDRESS.latitude} />
-            <FullscreenControl />
             <NavigationControl position='top-right' />
 
         </Map>
