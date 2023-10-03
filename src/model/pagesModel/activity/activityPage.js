@@ -30,7 +30,7 @@ export class ActivityPage extends APIQuery {
 
             return {
                 data: result,
-                pageSize:response.length
+                pageSize:1
             }
         } catch (err) {
             throw new Error(err)

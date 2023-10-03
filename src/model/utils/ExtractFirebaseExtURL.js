@@ -13,9 +13,20 @@ export const extractFirebaseExtUrl = (url = '')=>{
     return splitArray[0] + splitArray[1]
 }
 
+export const extractUrl = (url = '')=>{
+
+    if(url.includes('cloudinary'))return formatVideoUrl(url)
+
+    return formatImageUrl(url)
+}
 export const formatImageUrl = (url = '')=>{
     const finalUrl = url.includes("https") ? url : API_URL + url
     const cleanedUrl = extractFirebaseExtUrl(finalUrl)
-    console.log("^^^^^^^^",cleanedUrl)
     return cleanedUrl;
+}
+
+export const formatVideoUrl = (url = '') =>{
+    const urls = url.split('https')
+    const finalUrl = 'https' + urls[2]
+    return finalUrl;
 }

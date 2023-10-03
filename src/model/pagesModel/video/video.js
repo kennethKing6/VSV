@@ -1,4 +1,4 @@
-import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL";
+import {  extractUrl } from "../../utils/ExtractFirebaseExtURL";
 
 export class Video {
 
@@ -17,7 +17,6 @@ export class Video {
             _id,
             video: {url,size} } = data
 
-
        
 
         this.dateCreatedAt = createdAt;
@@ -25,7 +24,7 @@ export class Video {
         this.datePublisheddAt = published_at;
         this.dateLocaledAt = locale;
         this.ID = _id;
-        this.photoUrl = formatImageUrl(url)
+        this.photoUrl = extractUrl(url)
         this.photoHeight = size;
         this.description = description;
         this.title = titre;

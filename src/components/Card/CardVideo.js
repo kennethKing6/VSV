@@ -6,14 +6,15 @@ import { ASSETS } from '../../assets/assets'
 
 export default function CardVideo({
     imageHeight = "250",
-    src = "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    src = "",
     imgAlt = "green iguana",
-    title = "Lizard",
-    description = "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-    caption = "Lizards are a widespread group of squamate reptiles",
+    title = "",
+    description = "",
+    caption = "",
     publishedDate = ''
 
 }) {
+    
     return (
         <Card sx={{ width: '100%' }}>
             <CardMedia

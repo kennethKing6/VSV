@@ -1,4 +1,4 @@
-import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL"
+import {  formatImageUrl } from "../../utils/ExtractFirebaseExtURL"
 
 class ActivityImage {
     constructor(image) {

@@ -1,6 +1,6 @@
 import { API_URL, } from "../../api/Baseurl";
 import { APIQuery } from "../../api/apiQuery";
-import { formatImageUrl } from "../../utils/ExtractFirebaseExtURL";
+import { extractUrl } from "../../utils/ExtractFirebaseExtURL";
 
 
 class PhototequeList {
@@ -15,26 +15,24 @@ class PhototequeList {
      #setup(list = []) {
         this.rowList =  list.map((value) => {
 
-            const { categorie, photo,published_at:publishedAt } = value
+            const { categorie, photos,published_at:publishedAt } = value
 
             
          let imagesList = []
 
             //Extract the firebase url 
-          if(Array.isArray(photo)){
-            photo.forEach(element => {
+          if(Array.isArray(photos)){
+            photos.forEach(element => {
                 const { url } = element
-               imagesList.push(formatImageUrl(url))
+               imagesList.push(extractUrl(url))
 
             });
           }else{
-            const { url } = photo
+            const { url } = photos
             
-            imagesList.push(formatImageUrl(url))
+            imagesList.push(extractUrl(url))
 
           }
-            //Get the real url of the photo through firebase
-            console.log("imagesList",imagesList)
 
             // Display the date into the format
             let myDate = new Date(publishedAt);
@@ -73,7 +71,7 @@ export class Phototeque extends APIQuery {
             // Extract pageSize
             return {
                 carousel: photoList.reverse(),
-                pageSize: response.length,
+                pageSize: 1,
             }
 
 

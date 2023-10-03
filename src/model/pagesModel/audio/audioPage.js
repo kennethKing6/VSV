@@ -28,7 +28,7 @@ export class AudioPage extends APIQuery {
 
             return {
                 audios: result,
-                pageSize: response.length
+                pageSize: 1
             }
         } catch (err) {
             throw new Error(err)
