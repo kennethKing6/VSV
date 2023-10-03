@@ -47,13 +47,13 @@ export default function PageNavigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto" >
-                        <Nav.Link
+                        {/* <Nav.Link
                             onClick={() => {
                                 navigation("/library")
                             }}
                             style={styles(actualPage, 'library')}>
                             {APP18n.translate(APP18n.getKeys().navigation_libraries)}
-                        </Nav.Link>
+                        </Nav.Link> */}
                         <Nav.Link
                             onClick={() => {
                                 navigation("/video")
